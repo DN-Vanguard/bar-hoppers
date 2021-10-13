@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server-exporess');
+const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
     input DrinkInput {
@@ -53,10 +53,10 @@ const typeDefs = gql`
     }
     type Auth {
         token: ID!
-        user: user
+        user: User
     }
     type Query {
-        me: user
+        me: User
     }
     type Mutation {
         login(email: String!, password: String!): Auth
