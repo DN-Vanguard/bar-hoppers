@@ -1,7 +1,7 @@
 const { Schema } = require('mongoose');
 
 // Drink subdocument schema
-const DrinkSchema = new Schema({
+const drinkSchema = new Schema({
     drinkId: {
         type: Number,
         required: true,
@@ -68,4 +68,4 @@ const DrinkSchema = new Schema({
     },
 });
 
-module.exports = DrinkSchema;
+module.exports = drinkSchema;
