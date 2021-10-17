@@ -1,3 +1,23 @@
+# Description
+Allows user to order a drink with confidence, explore new beverage options and keep track of favorite drinks.
+
+# User Story
+```
+AS A new bar patron coming out of COVID era,
+I WANT to explore a lost of recommended accessible cocktail options that would introduce me to new drinks,
+SO THAT I can order with confidence and keep track of favorites
+```
+
+# Thought Process
+GIVEN
+WHEN
+THEN
+WHEN
+THEN
+WHEN
+THEN
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +88,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
