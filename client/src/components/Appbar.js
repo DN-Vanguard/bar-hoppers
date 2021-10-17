@@ -1,12 +1,13 @@
 import * as React from 'react';
 // Imports for Appbar
 import { styled, alpha } from '@mui/material/styles';
+import Paper from '@mui/material/Paper';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-// import InputBase from '@mui/material/InputBase';
+import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 // Imports for Drawer
@@ -16,12 +17,21 @@ import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 import LocalBarIcon from "@mui/icons-material/LocalBar";
 import ListAltIcon from "@mui/icons-material/ListAlt";
+import PersonIcon from '@mui/icons-material/Person';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
+import MapIcon from '@mui/icons-material/Map';
+import ContactSupportIcon from '@mui/icons-material/ContactSupport';
+import LogoutIcon from '@mui/icons-material/Logout';
+// Imports for NestedList
+import ListItemButton from '@mui/material/ListItemButton';
+import Collapse from '@mui/material/Collapse';
+import ExpandLess from '@mui/icons-material/ExpandLess';
+import ExpandMore from '@mui/icons-material/ExpandMore';
+import ShuffleIcon from '@mui/icons-material/Shuffle';
 // Imports for Autocomplete
-import TextField from '@mui/material/TextField';
+// import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
 const Search = styled('div')(({ theme }) => ({
@@ -31,12 +41,11 @@ const Search = styled('div')(({ theme }) => ({
     '&:hover': {
         backgroundColor: alpha(theme.palette.common.white, 0.25),
     },
-    marginRight: theme.spacing(2),
-    marginLeft: 0,
-    width: '100%',
+    marginRight: theme.spacing(3),
+    width: '85%',
     [theme.breakpoints.up('sm')]: {
         marginLeft: theme.spacing(3),
-        width: 'auto',
+        width: '80%',
     },
 }));
 
@@ -50,7 +59,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
     justifyContent: 'center',
 }));
 
-const StyledInputBase = styled(TextField)(({ theme }) => ({
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
     color: 'inherit',
     '& .MuiInputBase-input': {
         padding: theme.spacing(1, 1, 1, 0),
@@ -68,6 +77,11 @@ export default function Appbar() {
     const [state, setState] = React.useState({
         left: false
     });
+    const [open, setOpen] = React.useState(true);
+
+    const handleClick = () => {
+        setOpen(!open);
+    }
 
     const toggleDrawer = (anchor, open) => (event) => {
         if (
@@ -82,12 +96,13 @@ export default function Appbar() {
 
     const list = (anchor) => (
         <Box
-            sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
+            sx={{ width: 250, paddingTop: 4, paddingBottom: 4 }}
             role="presentation"
-            onClick={toggleDrawer(anchor, false)}
-            onKeyDown={toggleDrawer(anchor, false)}
         >
-            <List>
+            <List
+                onClick={toggleDrawer(anchor, false)}
+                onKeyDown={toggleDrawer(anchor, false)}
+            >
                 <ListItem button key="Suggested Drinks">
                     <ListItemIcon>
                         <LocalBarIcon />
@@ -97,101 +112,169 @@ export default function Appbar() {
             </List>
             <Divider />
             <List>
-                <ListItem button key="Explore Recipes By">
+                <ListItemButton onClick={handleClick}>
                     <ListItemIcon>
-                        <ListAltIcon />
+                        <SearchIcon />
                     </ListItemIcon>
-                    <ListItemText primary="Explore Recipes By" />
+                    <ListItemText primary="Explore By" />
+                    {open ? <ExpandLess /> : <ExpandMore />}
+                </ListItemButton>
+                <Collapse in={open} timeout="auto" unmountOnExit>
+                    {[
+                        "Letter",
+                        "Ingredient",
+                        "Glass",
+                        "Category",
+                        "Type"
+                    ].map((text) => (
+                        <List
+                            component="div"
+                            disablePadding
+                            onClick={toggleDrawer(anchor, false)}
+                            onKeyDown={toggleDrawer(anchor, false)}
+                        >
+                            <ListItemButton sx={{ pl: 4 }} key={text} >
+                                <ListItemIcon>
+                                    <ListAltIcon />
+                                </ListItemIcon>
+                                <ListItemText primary={text} />
+                            </ListItemButton>
+                        </List>
+                    ))}
+                    <List
+                        component="div"
+                        disablePadding
+                        onClick={toggleDrawer(anchor, false)}
+                        onKeyDown={toggleDrawer(anchor, false)}
+                    >
+                        <ListItemButton sx={{ pl: 4 }}>
+                            <ListItemIcon>
+                                <ShuffleIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Random" />
+                        </ListItemButton>
+                    </List>
+                </Collapse>
+            </List>
+            <Divider />
+            <List
+                onClick={toggleDrawer(anchor, false)}
+                onKeyDown={toggleDrawer(anchor, false)}
+            >
+                <ListItem button key="Favorites">
+                    <ListItemIcon>
+                        <BookmarkIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Favorites" />
                 </ListItem>
             </List>
             <Divider />
-            <List>
+            <List
+                onClick={toggleDrawer(anchor, false)}
+                onKeyDown={toggleDrawer(anchor, false)}
+            >
+                <ListItem button key="Bars Near Me">
+                    <ListItemIcon>
+                        <MapIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Bars Near Me" />
+                </ListItem>
+            </List>
+            <Divider />
+            <List
+                onClick={toggleDrawer(anchor, false)}
+                onKeyDown={toggleDrawer(anchor, false)}
+            >
                 {[
-                    "Suggested Drinks",
-                    "Explore Recipes By",
-                    "Favorites",
-                    "My Accont",
-                    "Bars"
+                    "Contact Us",
+                    "My Profile"
                 ].map((text, index) => (
                     <ListItem button key={text}>
                         <ListItemIcon>
-                            {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                            {index % 2 === 0 ? <ContactSupportIcon /> : <PersonIcon />}
                         </ListItemIcon>
                         <ListItemText primary={text} />
                     </ListItem>
                 ))}
             </List>
             <Divider />
-            <List>
-                {["All mail", "Trash", "Spam"].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>
-                            {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                        </ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
+            <List
+                sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, paddingBottom: { xs: 8, sm: 4} }}
+                onClick={toggleDrawer(anchor, false)}
+                onKeyDown={toggleDrawer(anchor, false)}
+            >
+                <ListItem button key="Logout">
+                    <ListItemIcon>
+                        <LogoutIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Logout" />
+                </ListItem>
             </List>
         </Box>
     );
 
     return (
-        <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static">
-                <Toolbar>
-                    <React.Fragment key="left">
-                        <IconButton
-                            size="large"
-                            edge="start"
-                            color="inherit"
-                            aria-label="open drawer"
-                            sx={{ mr: 2 }}
-                            onClick={toggleDrawer("left", true)}
+        <Paper sx={{ position: 'fixed', top: 0, left: 0, right: 0 }} elevation={3}>
+            <Box sx={{ flexGrow: 1 }}>
+                <AppBar
+                    position="static"
+                    sx={{ paddingTop: { xs: 4, sm: 0 } }}
+                >
+                    <Toolbar>
+                        <React.Fragment key="left">
+                            <IconButton
+                                size="large"
+                                edge="start"
+                                color="inherit"
+                                aria-label="open drawer"
+                                sx={{ mr: 2 }}
+                                onClick={toggleDrawer("left", true)}
+                            >
+                                <MenuIcon />
+                            </IconButton>
+                            <Drawer
+                                anchor="left"
+                                open={state["left"]}
+                                onClose={toggleDrawer("left", false)}
+                            >
+                                {list("left")}
+                            </Drawer>
+                        </React.Fragment>
+                        <LocalBarIcon sx={{marginRight: 1, display: {xs: 'none', sm: 'block'}}} />
+                        <Typography
+                            variant="h6"
+                            noWrap
+                            component="div"
+                            sx={{ display: { xs: 'none', sm: 'contents' }, fontWeight: 'bold'}}
                         >
-                            <MenuIcon />
-                        </IconButton>
-                        <Drawer
-                            anchor="left"
-                            open={state["left"]}
-                            onClose={toggleDrawer("left", false)}
-                        >
-                            {list("left")}
-                        </Drawer>
-                    </React.Fragment>
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="div"
-                        sx={{ display: { xs: 'none', sm: 'block' } }}
-                    >
-                        Bar-Hoppers
-                    </Typography>
-                    <Search>
-                        <SearchIconWrapper>
-                            <SearchIcon />
-                        </SearchIconWrapper>
-                        <Autocomplete
-                        sx={{width: 300}}
-                            freeSolo
-                            id="searchField"
-                            disableClearable
-                            options={topRatedDrinks.map((option) => option.name)}
-                            renderInput={(params) => (
-                                <StyledInputBase
-                                    {...params}
-                                    placeholder="Search…"
-                                    InputProps={{
-                                        ...params.InputProps,
-                                        'aria-label': 'search'
-                                    }}
-                                />
-                            )}
-                        />
-                    </Search>
-                    <Box sx={{ flexGrow: 1 }} />
-                </Toolbar>
-            </AppBar>
-        </Box>
+                            Bar-Hoppers
+                        </Typography>
+                        <Search>
+                            <SearchIconWrapper>
+                                <SearchIcon />
+                            </SearchIconWrapper>
+                            <Autocomplete
+                                freeSolo
+                                id="searchField"
+                                disableClearable
+                                options={topRatedDrinks.map((option) => option.name)}
+                                renderInput={(params) => (
+                                    <StyledInputBase
+                                        {...params}
+                                        placeholder="Search by name or by ingredient..."
+                                        InputProps={{
+                                            ...params.InputProps,
+                                            'aria-label': 'search'
+                                        }}
+                                    />
+                                )}
+                            />
+                        </Search>
+                        <Box sx={{ flexGrow: 1 }} />
+                    </Toolbar>
+                </AppBar>
+            </Box>
+        </Paper>
     );
 }
 
