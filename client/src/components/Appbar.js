@@ -30,9 +30,6 @@ import Collapse from '@mui/material/Collapse';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
-// Imports for Autocomplete
-// import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -73,7 +70,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-export default function Appbar() {
+export default function Appbar({ currentPage, handlePageChange }) {
     const [state, setState] = React.useState({
         left: false
     });
@@ -96,14 +93,14 @@ export default function Appbar() {
 
     const list = (anchor) => (
         <Box
-            sx={{ width: 250, paddingTop: 4, paddingBottom: 4 }}
+            sx={{ width: 250 }}
             role="presentation"
         >
             <List
                 onClick={toggleDrawer(anchor, false)}
                 onKeyDown={toggleDrawer(anchor, false)}
             >
-                <ListItem button key="Suggested Drinks">
+                <ListItem button key="Suggested Drinks" onClick={() => handlePageChange("Suggested")}>
                     <ListItemIcon>
                         <LocalBarIcon />
                     </ListItemIcon>
@@ -112,14 +109,14 @@ export default function Appbar() {
             </List>
             <Divider />
             <List>
-                <ListItemButton onClick={handleClick}>
+                <ListItemButton key="Explore By" onClick={handleClick}>
                     <ListItemIcon>
                         <SearchIcon />
                     </ListItemIcon>
                     <ListItemText primary="Explore By" />
                     {open ? <ExpandLess /> : <ExpandMore />}
                 </ListItemButton>
-                <Collapse in={open} timeout="auto" unmountOnExit>
+                <Collapse key="Collapse for Explore By" in={open} timeout="auto" unmountOnExit>
                     {[
                         "Letter",
                         "Ingredient",
@@ -133,7 +130,7 @@ export default function Appbar() {
                             onClick={toggleDrawer(anchor, false)}
                             onKeyDown={toggleDrawer(anchor, false)}
                         >
-                            <ListItemButton sx={{ pl: 4 }} key={text} >
+                            <ListItemButton sx={{ pl: 4 }} key={text} onClick={() => handlePageChange(text)}>
                                 <ListItemIcon>
                                     <ListAltIcon />
                                 </ListItemIcon>
@@ -147,7 +144,7 @@ export default function Appbar() {
                         onClick={toggleDrawer(anchor, false)}
                         onKeyDown={toggleDrawer(anchor, false)}
                     >
-                        <ListItemButton sx={{ pl: 4 }}>
+                        <ListItemButton sx={{ pl: 4 }} key="Random" onClick={() => handlePageChange("Random")}>
                             <ListItemIcon>
                                 <ShuffleIcon />
                             </ListItemIcon>
@@ -161,11 +158,11 @@ export default function Appbar() {
                 onClick={toggleDrawer(anchor, false)}
                 onKeyDown={toggleDrawer(anchor, false)}
             >
-                <ListItem button key="Favorites">
+                <ListItem button key="Favorite" onClick={() => handlePageChange("Favorite")} >
                     <ListItemIcon>
                         <BookmarkIcon />
                     </ListItemIcon>
-                    <ListItemText primary="Favorites" />
+                    <ListItemText primary="Favorite" />
                 </ListItem>
             </List>
             <Divider />
@@ -173,7 +170,7 @@ export default function Appbar() {
                 onClick={toggleDrawer(anchor, false)}
                 onKeyDown={toggleDrawer(anchor, false)}
             >
-                <ListItem button key="Bars Near Me">
+                <ListItem button key="Bars Near Me" onClick={() => handlePageChange("Map")}>
                     <ListItemIcon>
                         <MapIcon />
                     </ListItemIcon>
@@ -186,20 +183,20 @@ export default function Appbar() {
                 onKeyDown={toggleDrawer(anchor, false)}
             >
                 {[
-                    "Contact Us",
-                    "My Profile"
-                ].map((text, index) => (
-                    <ListItem button key={text}>
+                    { label: "Contact Us", target: "Contact" },
+                    { label: "My Profile", target: "Profile" }
+                ].map((input, index) => (
+                    <ListItem button key={input.label} onClick={() => handlePageChange(input.target)} >
                         <ListItemIcon>
                             {index % 2 === 0 ? <ContactSupportIcon /> : <PersonIcon />}
                         </ListItemIcon>
-                        <ListItemText primary={text} />
+                        <ListItemText primary={input.label} />
                     </ListItem>
                 ))}
             </List>
             <Divider />
             <List
-                sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, paddingBottom: { xs: 8, sm: 4} }}
+                sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, paddingBottom: 4 }}
                 onClick={toggleDrawer(anchor, false)}
                 onKeyDown={toggleDrawer(anchor, false)}
             >
@@ -218,7 +215,6 @@ export default function Appbar() {
             <Box sx={{ flexGrow: 1 }}>
                 <AppBar
                     position="static"
-                    sx={{ paddingTop: { xs: 4, sm: 0 } }}
                 >
                     <Toolbar>
                         <React.Fragment key="left">
@@ -240,12 +236,12 @@ export default function Appbar() {
                                 {list("left")}
                             </Drawer>
                         </React.Fragment>
-                        <LocalBarIcon sx={{marginRight: 1, display: {xs: 'none', sm: 'block'}}} />
+                        <LocalBarIcon sx={{ marginRight: 1, display: { xs: 'none', sm: 'block' } }} />
                         <Typography
                             variant="h6"
                             noWrap
                             component="div"
-                            sx={{ display: { xs: 'none', sm: 'contents' }, fontWeight: 'bold'}}
+                            sx={{ display: { xs: 'none', sm: 'contents' }, fontWeight: 'bold' }}
                         >
                             Bar-Hoppers
                         </Typography>
@@ -253,21 +249,11 @@ export default function Appbar() {
                             <SearchIconWrapper>
                                 <SearchIcon />
                             </SearchIconWrapper>
-                            <Autocomplete
-                                freeSolo
-                                id="searchField"
-                                disableClearable
-                                options={topRatedDrinks.map((option) => option.name)}
-                                renderInput={(params) => (
-                                    <StyledInputBase
-                                        {...params}
-                                        placeholder="Search by name or by ingredient..."
-                                        InputProps={{
-                                            ...params.InputProps,
-                                            'aria-label': 'search'
-                                        }}
-                                    />
-                                )}
+                            <StyledInputBase
+                                placeholder="Search by name or by ingredient..."
+                                inputProps={{
+                                    'aria-label': 'search'
+                                }}
                             />
                         </Search>
                         <Box sx={{ flexGrow: 1 }} />
@@ -277,7 +263,3 @@ export default function Appbar() {
         </Paper>
     );
 }
-
-const topRatedDrinks = [
-    { name: "AT&T" },
-];

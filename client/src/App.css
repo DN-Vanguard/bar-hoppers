@@ -1,33 +1,70 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
-
+  
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+    height: 40vmin;
+    pointer-events: none;
 }
 
+.HomePageUI {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    font-size: calc(10px + 2vmin);
+}
+  
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-    z-index: -1;
-  }
+    .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+      z-index: -1;
+    }
 }
 
+.SuggestedDrink-Display {
+    display: flex;
+    flex-direction: row;
+    height: 150px;
+}
+
+.SuggestDrink-Card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 150px;
+    width: 100px;
+}
+  
 .landingUI {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.DrinkDisplay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100px;
 }
+
+.DrinkDisplay label{
+    padding: 0.5rem;
+    font-size: small;
+    word-wrap: normal;
+}
+  
+@keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+}
+  
