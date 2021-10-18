@@ -4,8 +4,8 @@ Allows user to order a drink with confidence, explore new beverage options and k
 # User Story
 ```
 AS A new bar patron coming out of COVID era,
-I WANT to explore a lost of recommended accessible cocktail options that would introduce me to new drinks,
-SO THAT I can order with confidence and keep track of favorites
+I WANT to explore many recommended accessible cocktail options that would introduce me to new drinks,
+SO THAT I can order with confidence and keep track of my favorites all in one place.
 ```
 
 # Thought Process

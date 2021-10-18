@@ -9,6 +9,16 @@ export const searchByIngredient = (query) => {
 };
 
 // random cocktail
-export const randomCocktail = () => {
-  return fetch(`www.thecocktaildb.com/api/json/v1/1/random.php`);
+export const cocktailRandom = async () => {
+  return fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`);
 };
+
+// ten random cocktails
+export const cocktailParty = () => {
+  return fetch(`www.thecocktaildb.com/api/json/v1/1/randomselection.php`);
+}
+
+// 
+export const cocktailPopular = () => {
+  return fetch(`www.thecocktaildb.com/api/json/v1/1/popular.php`);
+}
