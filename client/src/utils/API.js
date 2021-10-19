@@ -2,12 +2,12 @@ require('dotenv').config();
 
 // search thecocktaildb by drinkId
 export const searchByID = (query) => {
-  return fetch(`cwww.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_COCKTAILDB_KEY}/lookup.php?i=${query}`);
+  return fetch(`https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_COCKTAILDB_KEY}/lookup.php?i=${query}`);
 };
 
 // search by ingredient
 export const searchByIngredient = (query) => {
-  return fetch(`https://stackoverflow.com/questions/59161825/react-material-ui-list-should-have-a-unique-key-propwww.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_COCKTAILDB_KEY}/filter.php?i=${query}`);
+  return fetch(`https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_COCKTAILDB_KEY}/filter.php?i=${query}`);
 };
 
 // random cocktail
@@ -22,5 +22,5 @@ export const cocktailParty = () => {
 
 // 
 export const cocktailPopular = () => {
-  return fetch(`https://stackoverflow.com/questions/59161825/react-material-ui-list-should-have-a-unique-key-propwww.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_COCKTAILDB_KEY}/popular.php`);
+  return fetch(`https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_COCKTAILDB_KEY}/popular.php`);
 }
