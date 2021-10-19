@@ -31,8 +31,10 @@ const SignupForm = () => {
   const handleClose = () => setOpen(false);
 
   const handleInputChange = (event) => {
+
     const { name, value } = event.target;
     setUserFormData({ ...userFormData, [name]: value });
+    console.log(name, value);
   };
 
   const handleFormSubmit = async (event) => {
@@ -85,7 +87,7 @@ const SignupForm = () => {
             <Input
               error
               type='text'
-              id='username'
+              name='username'
               onChange={handleInputChange}
               value={userFormData.username}
               required
@@ -98,7 +100,7 @@ const SignupForm = () => {
             <Input
               error
               type='email'
-              id='email'
+              name='email'
               onChange={handleInputChange}
               value={userFormData.email}
               required
@@ -111,7 +113,7 @@ const SignupForm = () => {
             <Input
               error
               type='password'
-              id='password'
+              name='password'
               onChange={handleInputChange}
               value={userFormData.password}
               required
