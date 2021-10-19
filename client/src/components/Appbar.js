@@ -19,9 +19,6 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import LocalBarIcon from "@mui/icons-material/LocalBar";
 import ListAltIcon from "@mui/icons-material/ListAlt";
-import PersonIcon from '@mui/icons-material/Person';
-import BookmarkIcon from '@mui/icons-material/Bookmark';
-import MapIcon from '@mui/icons-material/Map';
 import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 import LogoutIcon from '@mui/icons-material/Logout';
 // Imports for NestedList
@@ -158,41 +155,12 @@ export default function Appbar({ currentPage, handlePageChange }) {
                 onClick={toggleDrawer(anchor, false)}
                 onKeyDown={toggleDrawer(anchor, false)}
             >
-                <ListItem button key="Favorite" onClick={() => handlePageChange("Favorite")} >
+                <ListItem button key="Contact Us" onClick={() => handlePageChange("Contact")} >
                     <ListItemIcon>
-                        <BookmarkIcon />
+                        <ContactSupportIcon />
                     </ListItemIcon>
-                    <ListItemText primary="Favorite" />
+                    <ListItemText primary="Contact Us" />
                 </ListItem>
-            </List>
-            <Divider />
-            <List
-                onClick={toggleDrawer(anchor, false)}
-                onKeyDown={toggleDrawer(anchor, false)}
-            >
-                <ListItem button key="Bars Near Me" onClick={() => handlePageChange("Map")}>
-                    <ListItemIcon>
-                        <MapIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Bars Near Me" />
-                </ListItem>
-            </List>
-            <Divider />
-            <List
-                onClick={toggleDrawer(anchor, false)}
-                onKeyDown={toggleDrawer(anchor, false)}
-            >
-                {[
-                    { label: "Contact Us", target: "Contact" },
-                    { label: "My Profile", target: "Profile" }
-                ].map((input, index) => (
-                    <ListItem button key={input.label} onClick={() => handlePageChange(input.target)} >
-                        <ListItemIcon>
-                            {index % 2 === 0 ? <ContactSupportIcon /> : <PersonIcon />}
-                        </ListItemIcon>
-                        <ListItemText primary={input.label} />
-                    </ListItem>
-                ))}
             </List>
             <Divider />
             <List
