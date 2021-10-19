@@ -9,6 +9,7 @@
 
 .HomePageUI {
     padding-top: 3rem;
+    /* padding: 3rem 1rem 3rem 1rem; */
     /* display: flex; */
     /* flex-direction: column;
     align-items: flex-start; */
@@ -33,8 +34,12 @@
 }
 
 .SuggestedDrink {
-    display: flex;
-    flex-direction: row;
+    overflow: auto;
+    scroll-behavior: smooth;
+}
+
+.Header-SuggestedDrink {
+    padding: 0.5rem 0 0 1rem;
 }
 
 .SuggestedDrinkDisplay {
@@ -46,7 +51,6 @@
 }
 
 .SuggestedDrinkDisplay label{
-    padding: 0.5rem;
     font-size: medium;
     word-wrap: normal;
     text-align: center;

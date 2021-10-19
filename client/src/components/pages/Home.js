@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import "../../App.css"
 import { cocktailPopular } from '../../utils/API';
-// import Stack from '@mui/material/Stack';
+import Stack from '@mui/material/Stack';
 import Avatar from '@mui/material/Avatar';
 
 
@@ -46,17 +46,19 @@ export default function Home() {
     return (
         <div>
             <div className="HomePageUI">
-                <h3>Suggested Drink</h3>
-                {/* <Stack direction="row" spacing={2} sx={{ scrollBehavior: "smooth"}}> */}
-                    {popularDrinkData.map((drink) => {
-                        return (
-                            <div key={drink.drinkID} className="SuggestedDrinkDisplay">
-                                <Avatar alt={drink.drinkName} src={`${drink.drinkImg}/preview`} sx={{ width: 75, height: 75, zIndex: -1 }} />
-                                <label>{drink.drinkName}</label>
-                            </div>
-                        )
-                    })}
-                {/* </Stack> */}
+                <h3 className="Header-SuggestedDrink">Suggested Drink</h3>
+                <div className="SuggestedDrink">
+                    <Stack direction="row" spacing={2}>
+                        {popularDrinkData.map((drink) => {
+                            return (
+                                <div key={drink.drinkID} className="SuggestedDrinkDisplay">
+                                    <Avatar alt={drink.drinkName} src={`${drink.drinkImg}/preview`} sx={{ width: 75, height: 75, zIndex: -1 }} />
+                                    <label>{drink.drinkName}</label>
+                                </div>
+                            )
+                        })}
+                    </Stack>
+                </div>
             </div>
         </div>
     );
