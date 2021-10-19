@@ -30,7 +30,7 @@ const client = new ApolloClient({
     link: authLink.concat(httpLink),
     cache: new InMemoryCache(),
 });
-console.log(process.env.COCKTAILDB_KEY);
+console.log(process.env.REACT_APP_COCKTAILDB_KEY);
 function App() {
 
     return (
