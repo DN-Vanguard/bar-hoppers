@@ -30,9 +30,11 @@ const client = new ApolloClient({
     link: authLink.concat(httpLink),
     cache: new InMemoryCache(),
 });
-
+console.log(process.env.COCKTAILDB_KEY);
 function App() {
+
     return (
+
         <ApolloProvider client={client}>
             <MainUI />
             {/* {Auth.loggedIn() ? <MainUI /> : <Landing />} */}
