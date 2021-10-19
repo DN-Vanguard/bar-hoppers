@@ -41,17 +41,19 @@ export default function Suggested() {
     // console.log(popularDrinkData);
 
     return (
-        <div className="App">
+        <div>
             <div className="SuggestedPageUI">
-                <h3>Suggested Drink</h3>
-                {popularDrinkData.map((drink) => {
-                    return (
-                        <div key={drink.drinkID} className="SuggestedDrinkDisplay">
-                            <Avatar alt={drink.drinkName} src={`${drink.drinkImg}/preview`} sx={{ width: 75, height: 75, zIndex: -1 }} />
-                            <label>{drink.drinkName}</label>
-                        </div>
-                    )
-                })}
+                <h3 className="Header-SuggestedDrink">Suggested Drink</h3>
+                <div className="AllSuggestedDrinks">
+                    {popularDrinkData.map((drink) => {
+                        return (
+                            <div key={drink.drinkID} className="SuggestedPageDisplay">
+                                <Avatar alt={drink.drinkName} src={`${drink.drinkImg}/preview`} sx={{ width: 75, height: 75, zIndex: -1 }} />
+                                <label>{drink.drinkName}</label>
+                            </div>
+                        )
+                    })}
+                </div>
             </div>
         </div>
     );

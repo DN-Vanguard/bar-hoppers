@@ -19,13 +19,46 @@
 
 .SuggestedPageUI {
     padding-top: 3rem;
+    font-size: calc(10px + 2vmin);
+}
+
+.AllSuggestedDrinks {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.SuggestedPageDisplay{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
+    width: min-content;
+    height: fit-content;
 }
-  
+
+.SuggestedPageDisplay label{
+    font-size: medium;
+    word-wrap: normal;
+    text-align: center;
+}
+
+/* LETTER'S STYLING */
+.alphabetContainer {
+    margin-top: 8rem;
+    background-color: black;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.buttonStyles{
+    padding: 10px;
+}
+.buttonStyles button{
+    font-size: 30px;
+    border-radius: 50%;
+}
+
+/* ---------------- */
 @media (prefers-reduced-motion: no-preference) {
     .App-logo {
       animation: App-logo-spin infinite 20s linear;
@@ -36,6 +69,7 @@
 .SuggestedDrink {
     overflow: auto;
     scroll-behavior: smooth;
+    padding: 0 1rem 0 1rem;
 }
 
 .Header-SuggestedDrink {

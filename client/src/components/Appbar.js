@@ -28,6 +28,8 @@ import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
 
+import Auth from '../utils/auth';
+
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -169,7 +171,7 @@ export default function Appbar({ currentPage, handlePageChange }) {
                 onClick={toggleDrawer(anchor, false)}
                 onKeyDown={toggleDrawer(anchor, false)}
             >
-                <ListItem button key="Logout">
+                <ListItem button key="Logout" onClick={Auth.logout}>
                     <ListItemIcon>
                         <LogoutIcon />
                     </ListItemIcon>

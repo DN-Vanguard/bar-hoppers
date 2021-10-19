@@ -6,7 +6,7 @@ import Avatar from '@mui/material/Avatar';
 
 
 
-export default function Home() {
+export default function Home({ currentPage, handlePageChange }) {
     const [popularDrinkData, setPopularDrinkData] = useState([]);
     useEffect(() => {
         const loadPopular = async (event) => {
@@ -30,7 +30,7 @@ export default function Home() {
                 }));
                 // Test final drinkData.
                 // console.log(drinkData);
-                setPopularDrinkData(drinkData);
+                setPopularDrinkData(drinkData.splice(0, 10));
 
             } catch (err) {
                 console.error(err);
@@ -57,6 +57,9 @@ export default function Home() {
                                 </div>
                             )
                         })}
+                        <div className="SuggestedDrinkDisplay" onClick={() => handlePageChange("Suggested")}>
+                            <Avatar alt="View All" sx={{ width: 75, height: 75, zIndex: -1, fontSize: "medium"}}>View All</Avatar>
+                        </div>
                     </Stack>
                 </div>
             </div>

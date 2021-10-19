@@ -20,7 +20,7 @@ function MainUI() {
 
     const renderPage = () => {
         if (currentPage === "Home") {
-            return <Home />;
+            return <Home currentPage={currentPage} handlePageChange={handlePageChange}/>;
         }
         if (currentPage === "Profile") {
             return <Profile />;
