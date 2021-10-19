@@ -196,7 +196,7 @@ export default function Appbar({ currentPage, handlePageChange }) {
             </List>
             <Divider />
             <List
-                sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, paddingBottom: 4 }}
+                sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, paddingBottom: 2 }}
                 onClick={toggleDrawer(anchor, false)}
                 onKeyDown={toggleDrawer(anchor, false)}
             >
