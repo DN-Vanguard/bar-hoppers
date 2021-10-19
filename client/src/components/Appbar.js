@@ -126,8 +126,9 @@ export default function Appbar({ currentPage, handlePageChange }) {
                             disablePadding
                             onClick={toggleDrawer(anchor, false)}
                             onKeyDown={toggleDrawer(anchor, false)}
+                            key={text}
                         >
-                            <ListItemButton sx={{ pl: 4 }} key={text} onClick={() => handlePageChange(text)}>
+                            <ListItemButton sx={{ pl: 4 }}  onClick={() => handlePageChange(text)}>
                                 <ListItemIcon>
                                     <ListAltIcon />
                                 </ListItemIcon>

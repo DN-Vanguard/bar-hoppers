@@ -1,10 +1,10 @@
 import Avatar from '@mui/material/Avatar';
 
-export default function DrinkDisplay({randomDrinkData}) {
+export default function DrinkDisplay({drinkData}) {
     return (
         <div className="DrinkDisplay">
-            <Avatar alt={randomDrinkData.drinkName} src={randomDrinkData.drinkImg} sx={{ width: 100, height: 100, zIndex: -1 }} />
-            <label>{randomDrinkData.drinkName}</label>
+            <Avatar alt={drinkData.drinkName} src={`${drinkData.drinkImg}/preview`} sx={{ width: 100, height: 100, zIndex: -1 }} />
+            <label>{drinkData.drinkName}</label>
         </div>
     )
 }
