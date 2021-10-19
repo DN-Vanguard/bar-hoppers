@@ -135,7 +135,7 @@ export default function Appbar({ currentPage, handlePageChange }) {
                                     <ListAltIcon />
                                 </ListItemIcon>
                                 <ListItemText primary={text} />
-                            </ListItemButton>sd
+                            </ListItemButton>
                         </List>
                     ))}
                     <List
