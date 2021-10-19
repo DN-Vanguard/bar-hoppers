@@ -13,5 +13,8 @@
   "author": "",
   "devDependencies": {
     "concurrently": "^6.3.0"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0"
   }
 }

@@ -6,8 +6,8 @@ import {
     createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-// import Auth from './utils/auth';
-// import Landing from './components/pages/Landing';
+import Auth from './utils/auth';
+import Landing from './components/pages/Landing';
 import MainUI from './components/MainUI';
 
 const httpLink = createHttpLink({
@@ -30,12 +30,14 @@ const client = new ApolloClient({
     link: authLink.concat(httpLink),
     cache: new InMemoryCache(),
 });
-
+console.log(process.env.REACT_APP_COCKTAILDB_KEY);
 function App() {
+
     return (
+
         <ApolloProvider client={client}>
-            <MainUI />
-            {/* {Auth.loggedIn() ? <MainUI /> : <Landing />} */}
+            {/* <MainUI /> */}
+            {Auth.loggedIn() ? <MainUI /> : <Landing />}
         </ApolloProvider>
     );
 }
