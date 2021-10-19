@@ -77,7 +77,7 @@ const LoginForm = () => {
             <InputLabel htmlFor='email'>Email</InputLabel>
             <Input
               type='email'
-              id='email'
+              name='email'
               onChange={handleInputChange}
               value={userFormData.email}
               required
@@ -89,7 +89,7 @@ const LoginForm = () => {
             <InputLabel htmlFor='password'>Password</InputLabel>
             <Input
               type='password'
-              id='password'
+              name='password'
               onChange={handleInputChange}
               value={userFormData.password}
               required
