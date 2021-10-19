@@ -32,7 +32,7 @@ export default function Random() {
     };
 
     const renderDrink = () => {
-        return <DrinkDisplay drinkData={randomDrinkData} sx={{ paddingBottom: 2 }} />
+        return <DrinkDisplay randomDrinkData={randomDrinkData} sx={{ paddingBottom: 2 }} />
     }
 
     return (

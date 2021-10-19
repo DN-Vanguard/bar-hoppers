@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import "../../App.css"
 import { cocktailPopular } from '../../utils/API';
-import DrinkDisplay from '../DrinkDisplay';
+import Stack from '@mui/material/Stack';
+import Avatar from '@mui/material/Avatar';
 
 
 
 export default function Home() {
-    const [popularDrinkData, setPopularDrinkData] = useState();
+    const [popularDrinkData, setPopularDrinkData] = useState([]);
     useEffect(() => {
         const loadPopular = async (event) => {
 
@@ -30,7 +31,7 @@ export default function Home() {
                 // Test final drinkData.
                 // console.log(drinkData);
                 setPopularDrinkData(drinkData);
-    
+
             } catch (err) {
                 console.error(err);
             }
@@ -38,14 +39,26 @@ export default function Home() {
 
         loadPopular();
 
-    },[setPopularDrinkData])
+    }, [setPopularDrinkData])
 
-    console.log(popularDrinkData);
+    // console.log(popularDrinkData);
 
     return (
-        <div className="App">
-            <div className="landingUI">
-            <DrinkDisplay drinkData={popularDrinkData} sx={{ paddingBottom: 2 }} />
+        <div>
+            <div className="HomePageUI">
+                <h3 className="Header-SuggestedDrink">Suggested Drink</h3>
+                <div className="SuggestedDrink">
+                    <Stack direction="row" spacing={2}>
+                        {popularDrinkData.map((drink) => {
+                            return (
+                                <div key={drink.drinkID} className="SuggestedDrinkDisplay">
+                                    <Avatar alt={drink.drinkName} src={`${drink.drinkImg}/preview`} sx={{ width: 75, height: 75, zIndex: -1 }} />
+                                    <label>{drink.drinkName}</label>
+                                </div>
+                            )
+                        })}
+                    </Stack>
+                </div>
             </div>
         </div>
     );
