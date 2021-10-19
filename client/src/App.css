@@ -23,17 +23,21 @@
 }
 
 .AllSuggestedDrinks {
+    margin: 0.25rem 0.25rem 6rem 0.25rem;
     display: flex;
     flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
 .SuggestedPageDisplay{
+    margin: 0.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: min-content;
-    height: fit-content;
+    height: max-content;
 }
 
 .SuggestedPageDisplay label{
@@ -44,17 +48,17 @@
 
 /* LETTER'S STYLING */
 .alphabetContainer {
-    margin-top: 8rem;
-    background-color: black;
-    display: flex;
-    flex-wrap: wrap;
+    margin-top: 7rem;
+    /* display: flex;
+    flex-wrap: wrap; */
     justify-content: center;
+    /* background-color: black; */
 }
 .buttonStyles{
     padding: 10px;
 }
 .buttonStyles button{
-    font-size: 30px;
+    font-size: 12px;
     border-radius: 50%;
 }
 

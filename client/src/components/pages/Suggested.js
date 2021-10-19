@@ -43,7 +43,7 @@ export default function Suggested() {
     return (
         <div>
             <div className="SuggestedPageUI">
-                <h3 className="Header-SuggestedDrink">Suggested Drink</h3>
+                <h3 className="Header-SuggestedDrink">Suggested Drinks</h3>
                 <div className="AllSuggestedDrinks">
                     {popularDrinkData.map((drink) => {
                         return (

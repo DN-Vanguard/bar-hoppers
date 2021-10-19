@@ -46,7 +46,7 @@ export default function Home({ currentPage, handlePageChange }) {
     return (
         <div>
             <div className="HomePageUI">
-                <h3 className="Header-SuggestedDrink">Suggested Drink</h3>
+                <h3 className="Header-SuggestedDrink">Suggested Drinks</h3>
                 <div className="SuggestedDrink">
                     <Stack direction="row" spacing={2}>
                         {popularDrinkData.map((drink) => {
