@@ -6,7 +6,7 @@ import { useState } from 'react';
 import DrinkDisplay from '../DrinkDisplay';
 
 
-export default function Random() {
+export default function Random({ currentPage, handlePageChange }) {
     const [randomDrinkData, setRandomDrinkData] = useState();
     const handleClick = async (event) => {
 
@@ -19,6 +19,7 @@ export default function Random() {
             // Use the following console log to see the parsed response structure.
             // console.log(parsedRes.drinks[0])
             const drinkData = {
+                drinkID: parsedRes.drinks[0].idDrink,
                 drinkName: parsedRes.drinks[0].strDrink,
                 drinkImg: parsedRes.drinks[0].strDrinkThumb,
             }
@@ -32,7 +33,7 @@ export default function Random() {
     };
 
     const renderDrink = () => {
-        return <DrinkDisplay randomDrinkData={randomDrinkData} sx={{ paddingBottom: 2 }} />
+        return <DrinkDisplay randomDrinkData={randomDrinkData} currentPage={currentPage} handlePageChange={handlePageChange} sx={{ paddingBottom: 2 }} />
     }
 
     return (
