@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import "../../App.css"
 import { cocktailPopular } from '../../utils/API';
 import Avatar from '@mui/material/Avatar';
+// import DrinkDetail from './DrinkDetail';
 
-export default function Suggested() {
+export default function Suggested({ currentPage, handlePageChange }) {
     const [popularDrinkData, setPopularDrinkData] = useState([]);
     useEffect(() => {
         const loadPopular = async (event) => {
@@ -47,8 +48,8 @@ export default function Suggested() {
                 <div className="AllSuggestedDrinks">
                     {popularDrinkData.map((drink) => {
                         return (
-                            <div key={drink.drinkID} className="SuggestedPageDisplay">
-                                <Avatar alt={drink.drinkName} src={`${drink.drinkImg}/preview`} sx={{ width: 75, height: 75, zIndex: -1 }} />
+                            <div key={drink.drinkID} className="SuggestedPageDisplay" sx={{height: {xs: 120, sm:150}}} onClick={() => handlePageChange(drink.drinkID)}>
+                                <Avatar alt={drink.drinkName} src={`${drink.drinkImg}/preview`} sx={{ width: {xs: 75, sm: 100}, height: {xs: 75, sm:100}, zIndex: -1 }} />
                                 <label>{drink.drinkName}</label>
                             </div>
                         )

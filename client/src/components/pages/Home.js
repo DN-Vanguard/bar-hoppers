@@ -8,6 +8,8 @@ import Avatar from '@mui/material/Avatar';
 
 export default function Home({ currentPage, handlePageChange }) {
     const [popularDrinkData, setPopularDrinkData] = useState([]);
+    const [renderViewAll, setRenderViewAll] = useState(false);
+
     useEffect(() => {
         const loadPopular = async (event) => {
 
@@ -31,6 +33,7 @@ export default function Home({ currentPage, handlePageChange }) {
                 // Test final drinkData.
                 // console.log(drinkData);
                 setPopularDrinkData(drinkData.splice(0, 10));
+                setRenderViewAll(true);
 
             } catch (err) {
                 console.error(err);
@@ -39,27 +42,35 @@ export default function Home({ currentPage, handlePageChange }) {
 
         loadPopular();
 
-    }, [setPopularDrinkData])
+    }, [setPopularDrinkData]);
 
     // console.log(popularDrinkData);
+
+    const renderVAAvatar = () => {
+        if (renderViewAll === true) {
+            return (
+                <div className="SuggestedDrinkDisplay" onClick={() => handlePageChange("Suggested")}>
+                    <Avatar alt="View All" sx={{ width: 75, height: 75, zIndex: -1, fontSize: "medium" }}>View All</Avatar>
+                </div>
+            )
+        }
+    }
 
     return (
         <div>
             <div className="HomePageUI">
                 <h3 className="Header-SuggestedDrink">Suggested Drinks</h3>
                 <div className="SuggestedDrink">
-                    <Stack direction="row" spacing={2}>
+                    <Stack direction="row">
                         {popularDrinkData.map((drink) => {
                             return (
-                                <div key={drink.drinkID} className="SuggestedDrinkDisplay">
+                                <div key={drink.drinkID} className="SuggestedDrinkDisplay" onClick={() => handlePageChange(drink.drinkID)}>
                                     <Avatar alt={drink.drinkName} src={`${drink.drinkImg}/preview`} sx={{ width: 75, height: 75, zIndex: -1 }} />
                                     <label>{drink.drinkName}</label>
                                 </div>
                             )
                         })}
-                        <div className="SuggestedDrinkDisplay" onClick={() => handlePageChange("Suggested")}>
-                            <Avatar alt="View All" sx={{ width: 75, height: 75, zIndex: -1, fontSize: "medium"}}>View All</Avatar>
-                        </div>
+                        {renderVAAvatar()}
                     </Stack>
                 </div>
             </div>

@@ -27,7 +27,7 @@
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
 }
 
@@ -37,7 +37,9 @@
     flex-direction: column;
     align-items: center;
     width: min-content;
-    height: max-content;
+    flex-grow: 2;
+    flex-shrink: 0;
+    flex-basis: auto;
 }
 
 .SuggestedPageDisplay label{
@@ -49,16 +51,16 @@
 /* LETTER'S STYLING */
 .alphabetContainer {
     margin-top: 7rem;
-    /* display: flex;
-    flex-wrap: wrap; */
-    justify-content: center;
-    /* background-color: black; */
+    background-color: black;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
 }
 .buttonStyles{
-    padding: 10px;
+    padding: 2px;
 }
 .buttonStyles button{
-    font-size: 12px;
+    font-size: 20px;
     border-radius: 50%;
 }
 
@@ -73,7 +75,7 @@
 .SuggestedDrink {
     overflow: auto;
     scroll-behavior: smooth;
-    padding: 0 1rem 0 1rem;
+    /* padding: 0 1rem 0 1rem; */
 }
 
 .Header-SuggestedDrink {
@@ -85,7 +87,10 @@
     flex-direction: column;
     align-items: center;
     width: 100px;
-    height: fit-content;
+    height: 150px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: auto;
 }
 
 .SuggestedDrinkDisplay label{
