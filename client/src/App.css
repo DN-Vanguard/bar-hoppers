@@ -50,19 +50,14 @@
 
 /* LETTER'S STYLING */
 .alphabetContainer {
-    margin: 4rem 0.25rem 6rem 0.25rem;
+    margin-top: 12rem;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    align-items: center;
+    justify-content: center;
 }
-.buttonStyles{
-    padding: 0.5rem;
-    flex: 2 0 auto;
-}
-.buttonStyles button{
-    font-size: 20px;
-    border-radius: 50%;
+.avatarStyles {
+    padding: 5px;
 }
 
 /* ---------------- */
