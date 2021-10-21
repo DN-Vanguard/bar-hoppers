@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import "../../App.css"
 import { searchByID } from '../../utils/API';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
 
 export default function DrinkDetail(input) {
     const [drinkData, setDrinkData] = useState([]);
@@ -43,9 +44,31 @@ export default function DrinkDetail(input) {
 
     return (
         <div>
-            <div className="SuggestedPageUI">
-                <h3 className="Header-SuggestedDrink">{drinkData.drinkName}</h3>
-                <img src={`${drinkData.drinkImg}/preview`} alt={drinkData.drinkName} />
+            <div className="DrinkDetailUI">
+                <div className="Header-DrinkDetail">
+                    <h2>{drinkData.drinkName}</h2>
+                    <div>
+                        <BookmarkIcon fontSize="large"/>
+                    </div>
+                </div>
+                <img className="DrinkImg" src={drinkData.drinkImg} alt={drinkData.drinkName} />
+                <h3>Instruction</h3>
+                <hr />
+                <p>{drinkData.drinkInstructions}</p>
+                <h3>Details about the drink</h3>
+                <hr />
+                <div className="DetailsAboutDrink">
+                    <div>
+                        <p>Category:</p>
+                        <p>Alcoholic:</p>
+                        <p>Glass:</p>
+                    </div>
+                    <div>
+                        <p>{drinkData.drinkCategory}</p>
+                        <p>{drinkData.drinkAlcoholic}</p>
+                        <p>{drinkData.drinkGlass}</p>
+                    </div>
+                </div>
             </div>
         </div>
     )

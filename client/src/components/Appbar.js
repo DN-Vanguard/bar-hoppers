@@ -17,8 +17,10 @@ import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import banner from '../banner.png';
 import LocalBarIcon from "@mui/icons-material/LocalBar";
 import ListAltIcon from "@mui/icons-material/ListAlt";
+import ShuffleIcon from '@mui/icons-material/Shuffle';
 import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 import LogoutIcon from '@mui/icons-material/Logout';
 // Imports for NestedList
@@ -26,7 +28,6 @@ import ListItemButton from '@mui/material/ListItemButton';
 import Collapse from '@mui/material/Collapse';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
-import ShuffleIcon from '@mui/icons-material/Shuffle';
 
 import Auth from '../utils/auth';
 
@@ -99,6 +100,9 @@ export default function Appbar({ currentPage, handlePageChange }) {
                 onClick={toggleDrawer(anchor, false)}
                 onKeyDown={toggleDrawer(anchor, false)}
             >
+                <div className="Drawer-logo-box">
+                    <img src={banner} className="Drawer-logo" alt="logo" />
+                </div>
                 <ListItem button key="Suggested Drinks" onClick={() => handlePageChange("Suggested")}>
                     <ListItemIcon>
                         <LocalBarIcon />
@@ -130,7 +134,7 @@ export default function Appbar({ currentPage, handlePageChange }) {
                             onKeyDown={toggleDrawer(anchor, false)}
                             key={text}
                         >
-                            <ListItemButton sx={{ pl: 4 }}  onClick={() => handlePageChange(text)}>
+                            <ListItemButton sx={{ pl: 4 }} onClick={() => handlePageChange(text)}>
                                 <ListItemIcon>
                                     <ListAltIcon />
                                 </ListItemIcon>
@@ -167,7 +171,7 @@ export default function Appbar({ currentPage, handlePageChange }) {
             </List>
             <Divider />
             <List
-                sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, paddingBottom: 2 }}
+                sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, paddingBottom: 4 }}
                 onClick={toggleDrawer(anchor, false)}
                 onKeyDown={toggleDrawer(anchor, false)}
             >
