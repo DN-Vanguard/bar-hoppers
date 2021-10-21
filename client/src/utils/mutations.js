@@ -20,7 +20,38 @@ export const LOGIN_USER = gql`
             user {
                 _id
                 username
+                email
             }
         }
     }
 `;
+
+ export const SAVE_DRINK = gql`
+    mutation saveDrink($drink: DrinkInput) {
+        saveDrink(drink: $drink) {
+            _id
+            username
+            email
+            savedDrinks {
+                drinkID
+                drinkName
+                drinkImg
+            }
+        }
+    }
+ `;
+
+ export const REMOVE_DRINK = gql`
+    mutation removeDrink($drinkID: Int!) {
+        removeDrink(drinkID: $drinkID) {
+            _id
+            username
+            email
+            savedDrinks {
+                drinkID
+                drinkName
+                drinkImg
+            }
+        }
+    }
+ `;

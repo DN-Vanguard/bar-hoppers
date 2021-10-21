@@ -2,14 +2,14 @@ const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
     input DrinkInput {
-        drinkId: Int
+        drinkID: Int!
         drinkName: String!
         drinkImg: String
         drinkCategory: String
         drinkAlcoholic: String
         drinkGlass: String
         drinkInstructions: String
-        ingredient1: String!
+        ingredient1: String
         ingredient2: String
         ingredient3: String
         ingredient4: String
@@ -26,20 +26,20 @@ const typeDefs = gql`
         ingredient15: String
     }
     type User {
-        _id: ID
+        _id: ID!
         username: String!
         email: String!
         savedDrinks: [Drink]
     }
     type Drink {
-        drinkId: Int
+        drinkID: Int!
         drinkName: String!
         drinkImg: String
         drinkCategory: String
         drinkAlcoholic: String
         drinkGlass: String
         drinkInstructions: String
-        ingredient1: String!
+        ingredient1: String
         ingredient2: String
         ingredient3: String
         ingredient4: String
@@ -60,13 +60,14 @@ const typeDefs = gql`
         user: User
     }
     type Query {
+        # users: [User]
         me: User
     }
     type Mutation {
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
         saveDrink(drink: DrinkInput): User
-        removeDrink(drinkId: Int!): User
+        removeDrink(drinkID: Int!): User
     }
 `;
 
