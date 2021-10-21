@@ -13,6 +13,7 @@ import Category from './pages/Category';
 import Type from './pages/Type';
 import Random from './pages/Random';
 import Contact from './pages/Contact';
+import DrinkDetail from './pages/DrinkDetail';
 
 
 function MainUI() {
@@ -20,40 +21,43 @@ function MainUI() {
 
     const renderPage = () => {
         if (currentPage === "Home") {
-            return <Home />;
+            return <Home currentPage={currentPage} handlePageChange={handlePageChange}/>;
         }
         if (currentPage === "Profile") {
-            return <Profile />;
+            return <Profile currentPage={currentPage} handlePageChange={handlePageChange}/>;
         }
         if (currentPage === "Favorite") {
-            return <Favorite />;
+            return <Favorite currentPage={currentPage} handlePageChange={handlePageChange}/>;
         }
         if (currentPage === "Map") {
-            return <Map />;
+            return <Map currentPage={currentPage} handlePageChange={handlePageChange}/>;
         }
         if (currentPage === "Suggested") {
-            return <Suggested />;
+            return <Suggested currentPage={currentPage} handlePageChange={handlePageChange}/>;
         }
         if (currentPage === "Letter") {
-            return <Letter />;
+            return <Letter currentPage={currentPage} handlePageChange={handlePageChange}/>;
         }
         if (currentPage === "Ingredient") {
-            return <Ingredient />;
+            return <Ingredient currentPage={currentPage} handlePageChange={handlePageChange}/>;
         }
         if (currentPage === "Glass") {
-            return <Glass />;
+            return <Glass currentPage={currentPage} handlePageChange={handlePageChange}/>;
         }
         if (currentPage === "Category") {
-            return <Category />;
+            return <Category currentPage={currentPage} handlePageChange={handlePageChange}/>;
         }
         if (currentPage === "Type") {
-            return <Type />;
+            return <Type currentPage={currentPage} handlePageChange={handlePageChange}/>;
         }
         if (currentPage === "Random") {
-            return <Random />;
+            return <Random currentPage={currentPage} handlePageChange={handlePageChange}/>;
         }
         if (currentPage === "Contact") {
-            return <Contact />;
+            return <Contact currentPage={currentPage} handlePageChange={handlePageChange}/>;
+        }
+        if (currentPage.match(/^\d{5,6}$/)) {
+            return <DrinkDetail drinkID={currentPage} />
         }
     };
 
