@@ -24,6 +24,7 @@ SO THAT I can order with confidence and keep track of my favorites all in one pl
 [Click here to check out our app!](https://dn-bar-hopper.herokuapp.com/)
 
 # Thought Process
+```
 GIVEN
 WHEN
 THEN
@@ -31,6 +32,7 @@ WHEN
 THEN
 WHEN
 THEN
+```
 
 
 # Getting Started with Create React App

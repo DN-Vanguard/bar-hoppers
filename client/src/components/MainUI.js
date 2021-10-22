@@ -15,6 +15,7 @@ import Random from './pages/Random';
 import Contact from './pages/Contact';
 import DrinkDetail from './pages/DrinkDetail';
 import Search from './pages/Search';
+import LetterResults from './pages/LetterResults';
 
 
 function MainUI() {
@@ -38,7 +39,7 @@ function MainUI() {
             return <Suggested currentPage={currentPage} handlePageChange={handlePageChange}/>;
         }
         if (currentPage === "Letter") {
-            return <Letter currentPage={currentPage} handlePageChange={handlePageChange}/>;
+            return <Letter currentPage={currentPage} handlePageChange={handlePageChange} setQuery={setQuery}/>;
         }
         if (currentPage === "Ingredient") {
             return <Ingredient currentPage={currentPage} handlePageChange={handlePageChange}/>;
@@ -64,6 +65,10 @@ function MainUI() {
         if (currentPage.match(/^\d{5,6}$/)) {
             return <DrinkDetail drinkID={currentPage} />
         }
+        if (currentPage === "LetterResults") {
+            return <LetterResults currentPage={currentPage} handlePageChange={handlePageChange} query={query} />
+        }
+
     };
 
  
