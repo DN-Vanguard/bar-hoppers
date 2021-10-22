@@ -8,9 +8,14 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo-bh.png",
+      "src": "logo-bh.svg",
+      "type": "image/svg",
+      "sizes": "115x126"
+    },
+    {
+      "src": "banner.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "982x428"
     }
   ],
   "start_url": ".",
