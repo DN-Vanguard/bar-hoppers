@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { searchByName } from "../../utils/API";
 import Avatar from '@mui/material/Avatar';
 
-export default function Search({currentPage, handlePageChange, query}) {
+export default function Search({ currentPage, handlePageChange, query }) {
     const [searchResults, setSearchResults] = useState([]);
 
     // console.log(query);
@@ -18,6 +18,9 @@ export default function Search({currentPage, handlePageChange, query}) {
                 const { drinks } = await response.json();
                 // Use the following console log to see the parsed response structure.
                 // console.log(drinks)
+                if (!drinks) {
+                    setSearchResults(drinks);
+                }
                 const drinkData = drinks.map((drink) => ({
                     drinkID: drink.idDrink,
                     drinkName: drink.strDrink,
@@ -31,7 +34,7 @@ export default function Search({currentPage, handlePageChange, query}) {
                 // console.log(drinkData);
                 setSearchResults(drinkData);
 
-            }  catch (err) {
+            } catch (err) {
                 console.error(err);
             }
         }
@@ -42,21 +45,28 @@ export default function Search({currentPage, handlePageChange, query}) {
 
     // console.log(searchResults);
 
+    const renderSearchResult = () => {
+        return (
+            searchResults.map((drink) => {
+                return (
+                    <div key={drink.drinkID} className="SuggestedPageDisplay" sx={{ height: { xs: 120, sm: 150 } }} onClick={() => handlePageChange(drink.drinkID)}>
+                        <Avatar alt={drink.drinkName} src={`${drink.drinkImg}/preview`} sx={{ width: { xs: 75, sm: 100 }, height: { xs: 75, sm: 100 }, zIndex: -1 }} />
+                        <label>{drink.drinkName}</label>
+                    </div>
+                )
+            })
+        )
+    }
+
     return (
         <div>
             <div className="SuggestedPageUI">
                 <h3 className="Header-SuggestedDrink">Search Results: {query}</h3>
                 <div className="AllSuggestedDrinks">
-                    {searchResults.map((drink) => {
-                        return (
-                            <div key={drink.drinkID} className="SuggestedPageDisplay" sx={{height: {xs: 120, sm:150}}} onClick={() => handlePageChange(drink.drinkID)}>
-                                <Avatar alt={drink.drinkName} src={`${drink.drinkImg}/preview`} sx={{ width: {xs: 75, sm: 100}, height: {xs: 75, sm:100}, zIndex: -1 }} />
-                                <label>{drink.drinkName}</label>
-                            </div>
-                        )
-                    })}
+                    {searchResults ? renderSearchResult() : <p>No Result</p>}
                 </div>
             </div>
+
         </div>
     )
 }

@@ -9,17 +9,16 @@
 
 .Drawer-logo-box {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .Drawer-logo {
     height: 6.5rem;
-    border-radius: 1rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
 
-.HomePageUI, .SuggestedPageUI, .DrinkDetailUI {
+.HomePageUI, .SuggestedPageUI, .DrinkDetailUI, .ContactPageUI {
     padding-top: 3rem;
     font-size: calc(10px + 2vmin);
 }
