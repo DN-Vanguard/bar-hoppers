@@ -225,7 +225,7 @@ export default function Appbar({ currentPage, handlePageChange, setQuery }) {
                                 <SearchIcon />
                             </SearchIconWrapper>
                             <StyledInputBase
-                                placeholder="Search by drink name..."
+                                placeholder="Search by name..."
                                 inputProps={{
                                     'aria-label': 'search'
                                 }}
