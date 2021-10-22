@@ -14,10 +14,12 @@ import Type from './pages/Type';
 import Random from './pages/Random';
 import Contact from './pages/Contact';
 import DrinkDetail from './pages/DrinkDetail';
+import Search from './pages/Search';
 
 
 function MainUI() {
     const [currentPage, setCurrentPage] = useState("Home");
+    const [query, setQuery] = useState();
 
     const renderPage = () => {
         if (currentPage === "Home") {
@@ -56,6 +58,9 @@ function MainUI() {
         if (currentPage === "Contact") {
             return <Contact currentPage={currentPage} handlePageChange={handlePageChange}/>;
         }
+        if (currentPage === "Search") {
+            return <Search currentPage={currentPage} handlePageChange={handlePageChange} query={query} />
+        }
         if (currentPage.match(/^\d{5,6}$/)) {
             return <DrinkDetail drinkID={currentPage} />
         }
@@ -67,7 +72,7 @@ function MainUI() {
 
     return (
         <div>
-            <Appbar currentPage={currentPage} handlePageChange={handlePageChange} />
+            <Appbar currentPage={currentPage} handlePageChange={handlePageChange} setQuery={setQuery}/>
             {renderPage()}
             <BottomNav currentPage={currentPage} handlePageChange={handlePageChange} />
         </div>

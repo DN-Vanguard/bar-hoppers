@@ -70,7 +70,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-export default function Appbar({ currentPage, handlePageChange }) {
+export default function Appbar({ currentPage, handlePageChange, setQuery }) {
     const [state, setState] = React.useState({
         left: false
     });
@@ -228,6 +228,13 @@ export default function Appbar({ currentPage, handlePageChange }) {
                                 placeholder="Search by name or by ingredient..."
                                 inputProps={{
                                     'aria-label': 'search'
+                                }}
+                                onKeyDown={(e) => {
+                                    if (e.key === "Enter") {
+                                        setQuery(e.target.value);
+                                        handlePageChange("Search");
+                                        e.target.value = "";
+                                    };
                                 }}
                             />
                         </Search>
