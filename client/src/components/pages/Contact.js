@@ -38,7 +38,7 @@ export default function Contact() {
                   <TextField type="email" placeholder="Enter email" label="Email" variant="outlined" fullWidth required />
                 </Grid>
                 <Grid item xs={12}>
-                  <TextField type="number" placeholder="Enter phone number" label="Phone" variant="outlined" fullWidth required />
+                  <TextField type="tel" placeholder="Enter phone number" label="Phone" variant="outlined" fullWidth required />
                 </Grid>
                 <Grid item xs={12}>
                   <TextField label="Message" multiline rows={4} placeholder="Type your message here" variant="outlined" fullWidth required />
