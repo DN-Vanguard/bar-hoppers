@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-// import Button from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar';
+import "../../App.css";
 
 
-export default function Letter({ currentPage, handlePageChange }) {
+
+export default function Letter({ currentPage, handlePageChange, setQuery }) {
   const [stateLtrNum, setStateLtrNum] = useState([]);
 
   useEffect(() => {
@@ -15,13 +16,11 @@ export default function Letter({ currentPage, handlePageChange }) {
 
   }, [setStateLtrNum])
 
-  // console.log(stateLtrNum);
-
   const renderLtrNum = () => {
     return (
       stateLtrNum.map((character) => {
         return (
-          <div key={character} className="avatarStyles" onClick={() => handlePageChange(character)}>
+          <div key={character} className="avatarStyles" onClick={() => {setQuery(character); handlePageChange("LetterResults")}}>
             <Avatar variant="outlined" alt={character} sx={{ width: 50, height: 50, fontSize: "x-large",  backgroundColor: "royalblue" }}>{character}</Avatar>
           </div>
         )

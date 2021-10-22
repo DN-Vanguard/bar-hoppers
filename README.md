@@ -9,6 +9,7 @@ SO THAT I can order with confidence and keep track of my favorites all in one pl
 ```
 
 # Thought Process
+```
 GIVEN
 WHEN
 THEN
@@ -16,6 +17,7 @@ WHEN
 THEN
 WHEN
 THEN
+```
 
 
 # Getting Started with Create React App

@@ -10,7 +10,6 @@ export const searchByName = (query) => {
   return fetch(`https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_COCKTAILDB_KEY}/search.php?s=${query}`);
 };
 
-
 // search by ingredient
 export const searchByIngredient = (query) => {
   return fetch(`https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_COCKTAILDB_KEY}/filter.php?i=${query}`);
@@ -25,6 +24,29 @@ export const cocktailRandom = async () => {
 export const cocktailParty = () => {
   return fetch(`https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_COCKTAILDB_KEY}/randomselection.php`);
 }
+
+// search thecocktaildb by first letter or #
+export const searchByFirstLetter = (query) => {
+  return fetch(`https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_COCKTAILDB_KEY}/search.php?f=${query}`);
+};
+
+// List all CATEGORY
+export const allCategory = () => {
+  return fetch(`https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_COCKTAILDB_KEY}/list.php?c=list`);
+}
+// List all GLASSES
+export const allGlasses = () => {
+  return fetch(`https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_COCKTAILDB_KEY}/list.php?g=list`);
+}
+// List all INGREDIENTS
+export const allIngredients = () => {
+  return fetch(`https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_COCKTAILDB_KEY}/list.php?i=list`);
+}
+// List all TYPES
+export const allTypes = () => {
+  return fetch(`https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_COCKTAILDB_KEY}/list.php?a=list`);
+}
+
 
 // 
 export const cocktailPopular = () => {
