@@ -2,68 +2,25 @@ const { Schema } = require('mongoose');
 
 // Drink subdocument schema
 const drinkSchema = new Schema({
-    drinkId: {
-        type: Number,
-        required: true,
-    },
-    name: {
-        type: String,
-        required: true,
-    },
-    image: {
+    drinkID: {
         type: String,
     },
-    tags: [
-        {
-            type: String,
-        },
-    ],
-    instructions: {
+    drinkName: {
         type: String,
     },
-    ingredient1: {
+    drinkImg: {
         type: String,
     },
-    ingredient2: {
+    drinkCategory: {
         type: String,
     },
-    ingredient3: {
+    drinkAlcoholic: {
         type: String,
     },
-    ingredient4: {
+    drinkGlass: {
         type: String,
     },
-    ingredient5: {
-        type: String,
-    },
-    ingredient6: {
-        type: String,
-    },
-    ingredient7: {
-        type: String,
-    },
-    ingredient8: {
-        type: String,
-    },
-    ingredient9: {
-        type: String,
-    },
-    ingredient10: {
-        type: String,
-    },
-    ingredient11: {
-        type: String,
-    },
-    ingredient12: {
-        type: String,
-    },
-    ingredient13: {
-        type: String,
-    },
-    ingredient14: {
-        type: String,
-    },
-    ingredient15: {
+    drinkInstructions: {
         type: String,
     },
 });

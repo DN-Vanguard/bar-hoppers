@@ -29,26 +29,38 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
-        saveDrink: async (parent, args, context) => {
-            const drink = { ...args };
+        saveDrink: async (parent, drink, context) => {
+            // const drink = { ...args };
             if (context.user) {
-              const user = await User.findOneAndUpdate(
-                { _id: context.user._id },
-                { $addToSet: { savedDrinks: drink } },
-                { new: true }
-              );
-              return user;
+            //   const user = await User.findOneAndUpdate(
+            //     { _id: context.user._id },
+            //     { $addToSet: { savedDrinks: drink } },
+            //     { new: true }
+            //   );
+            //   return user;
+            //###################################################
+                return User.findOneAndUpdate(
+                    {_id: context.user._id},
+                    {$addToSet: {savedDrinks: drink }},
+                    {new: true}
+                )
             }
             throw new AuthenticationError('Please sign in');
         },
-        removeDrink: async (parent, { drinkId }, context) => {
+        removeDrink: async (parent, { drinkID }, context) => {
             if (context.user) {
-              const user = await User.findOneAndUpdate(
-                { _id: context.user._id },
-                { $addToSet: { savedDrinks: { drinkId: drinkId } } },
-                { new: true }
-              );
-              return user;
+            //   const user = await User.findOneAndUpdate(
+            //     { _id: context.user._id },
+            //     { $addToSet: { savedDrinks: { drinkID: drinkID } } },
+            //     { new: true }
+            //   );
+            //   return user;
+            //##################################################
+                return User.findOneAndUpdate(
+                    {_id: context.user._id},
+                    {$pull: {savedDrinks: {drinkID : drinkID}}},
+                    {new: true}
+                )
             }
             throw new AuthenticationError('Please sign in');
         },
