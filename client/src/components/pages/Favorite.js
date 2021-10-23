@@ -5,8 +5,9 @@ import SavedDrinks from '../SavedDrinks';
 
 export default function Favorite({ handlePageChange }) {
     return (
-        <div className="App">
-            <div className="landingUI">
+        <div className="FavoritePageUI">
+            <div>
+                <h3>My Favorites</h3>
                 <div>
                     <SavedDrinks handlePageChange={handlePageChange} /> 
                 </div>

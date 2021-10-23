@@ -27,12 +27,17 @@
     font-size: calc(10px + 2vmin);
 }
 
-.HomePageUI, .SuggestedPageUI, .DrinkDetailUI, .ContactPageUI, .RandomPageUI {
+.landingBanner {
+    width: 375px;
+    margin-bottom: 1rem;
+}
+
+.HomePageUI, .SuggestedPageUI, .DrinkDetailUI, .ContactPageUI, .RandomPageUI, .FavoritePageUI {
     padding-top: 3rem;
     font-size: calc(10px + 2vmin);
 }
 
-.DrinkDetailUI {
+.DrinkDetailUI, .FavoritePageUI {
     padding-left: 1rem;
     padding-right: 1rem;
     padding-bottom: 5rem;

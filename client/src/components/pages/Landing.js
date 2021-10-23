@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../../logo-bh.png';
+import banner from '../../banner.png'
 import Stack from '@mui/material/Stack';
 import "../../App.css"
 import SignupForm from '../SignupForm';
@@ -14,8 +14,8 @@ export default function Landing() {
     return (
         <div className="App">
             <body className="landingUI">
-                <img src={logo} className="App-logo" alt="logo" />
-                <Stack spacing={2} direction="column">
+                <img src={banner} className="landingBanner" alt="Bar-Hoppers" />
+                <Stack spacing={4} direction="column">
                     <SignupForm />
                     <LoginForm />
                 </Stack>
