@@ -1,7 +1,6 @@
 import React from 'react';
 import logo from '../../logo-bh.png';
 import "../../App.css"
-import SavedDrinks from '../SavedDrinks';
 
 export default function Profile() {
     return (
