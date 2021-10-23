@@ -82,6 +82,7 @@
     font-size: medium;
     word-wrap: normal;
     text-align: center;
+    max-lines: 3;
 }
 
 /* LETTER'S, CATEGORY, GLASS AND TYPE STYLING */
@@ -146,6 +147,7 @@
     font-size: medium;
     word-wrap: normal;
     text-align: center;
+    max-lines: 3;
 }
 
 .ExploreByHomeSec {
@@ -182,8 +184,6 @@
     text-align: center;
 }
   
-
-
 .DrinkDisplay {
     display: flex;
     flex-direction: column;
@@ -195,6 +195,7 @@
     padding: 0.5rem;
     font-size: medium;
     word-wrap: normal;
+    max-lines: 3;
 }
 
 .RandomOptions {
@@ -213,6 +214,29 @@
 
 .RandomOptions label {
     padding-top: 0.5rem;
+}
+
+.FavoriteDrinkDisplay {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.FavoriteDrinkDisplayButton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 1px solid #3b8ad9;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin: 0.25rem;
+    width: 100vh;
+}
+
+.FavoriteDrinkDisplay label {
+    padding-Left: 1rem;
+    font-size: large;
+    font-weight: bold;
 }
   
 .NoResult {
