@@ -6,12 +6,12 @@ import { useQuery, useMutation } from "@apollo/client";
 import Auth from "../utils/auth";
 import { removeDrinkID } from "../utils/localStorage";
 
-const SavedDrinks = ({currentPage, handlePageChange}) => {
-    const {loading, error, data} = useQuery(GET_ME)
+const SavedDrinks = ({ currentPage, handlePageChange }) => {
+    const { loading, error, data } = useQuery(GET_ME)
     if (error) {
         console.error(error)
     }
-    const [removeDrink] = useMutation(REMOVE_DRINK, {refetchQueries: [GET_ME]});
+    const [removeDrink] = useMutation(REMOVE_DRINK, { refetchQueries: [GET_ME] });
     console.log(data)
     const userData = data?.me;
     console.log(userData)
@@ -26,7 +26,7 @@ const SavedDrinks = ({currentPage, handlePageChange}) => {
 
         try {
             await removeDrink({
-                variables: {drinkID},
+                variables: { drinkID },
             })
             removeDrinkID(drinkID);
         } catch (err) {
@@ -44,15 +44,18 @@ const SavedDrinks = ({currentPage, handlePageChange}) => {
                 {userData.savedDrinks.map((drink) => {
                     return (
                         <div>
-                            <div key={drink.drinkID} onClick={() => handlePageChange(drink.drinkID)}>
-                                <Avatar alt={drink.drinkName} src={`${drink.drinkImg}/preview`} sx={{ width: 75, height: 75, zIndex: -1 }} />
-                                <label>{drink.drinkName}</label>
+                            <div className="FavoriteDrinkDisplay" key={drink.drinkID}>
+                                <div className="FavoriteDrinkDisplayButton" onClick={() => handlePageChange(drink.drinkID)}>
+                                    <Avatar alt={drink.drinkName} src={`${drink.drinkImg}/preview`} sx={{ width: 50, height: 50, zIndex: -1 }} />
+                                    <label>{drink.drinkName}</label>
+                                </div>
+                                <div>
+                                    <IconButton onClick={() => handleDeleteDrink(drink.drinkID)} style={{ cursor: "pointer" }} >
+                                        <DeleteForeverIcon fontSize="large" />
+                                    </IconButton>
+                                </div>
                             </div>
-                            <div>
-                            <IconButton onClick={() => handleDeleteDrink(drink.drinkID)} style={{cursor:"pointer"}} >
-                                <DeleteForeverIcon />
-                            </IconButton>
-                            </div>
+
                         </div>
                     )
                 })}
