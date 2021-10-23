@@ -2,14 +2,13 @@ import React from 'react';
 import logo from '../../logo-bh.png';
 import "../../App.css"
 
-export default function Favorite() {
+export default function Favorite({ handlePageChange }) {
     return (
         <div className="App">
             <div className="landingUI">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                    This is Favorite
-                </p>
+                <div>
+                    <SavedDrinks handlePageChange={handlePageChange} /> 
+                </div>
             </div>
         </div>
     );
