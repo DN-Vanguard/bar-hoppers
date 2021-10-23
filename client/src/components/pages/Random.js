@@ -1,8 +1,9 @@
+import * as React from 'react';
 import logo from "../../logo-bh.png";
 import "../../App.css";
 import { cocktailRandom } from "../../utils/API";
 import BookmarkIcon from '@mui/icons-material/Bookmark';
-import { Button } from "@mui/material";
+import { Button, IconButton } from "@mui/material";
 import { useEffect, useState } from "react";
 import DrinkDisplay from "../DrinkDisplay";
 import { saveDrinkIDs, getSavedDrinkIDs } from "../../utils/localStorage";
@@ -66,6 +67,16 @@ export default function Random({ currentPage, handlePageChange }) {
     }
   };
 
+  const [open, setOpen] = React.useState(false);
+
+  const handleTooltipClose = () => {
+    setOpen(false);
+  };
+
+  const handleTooltipOpen = () => {
+    setOpen(true);
+  };
+
   const renderDrink = () => {
     return (
       <div>
@@ -75,10 +86,9 @@ export default function Random({ currentPage, handlePageChange }) {
           handlePageChange={handlePageChange}
           sx={{ paddingBottom: 2 }}
         />
-        <BookmarkIcon
-          onClick={() => handleSaveDrink(randomDrinkData)}
-          style={{cursor:"pointer"}}
-        ></BookmarkIcon>
+        <IconButton onClick={() => [handleSaveDrink(randomDrinkData), handleTooltipOpen]} style={{cursor:"pointer"}} >
+            <BookmarkIcon />
+        </IconButton>                        
       </div>
     );
   };
