@@ -67,16 +67,6 @@ export default function Random({ currentPage, handlePageChange }) {
     }
   };
 
-  const [open, setOpen] = React.useState(false);
-
-  const handleTooltipClose = () => {
-    setOpen(false);
-  };
-
-  const handleTooltipOpen = () => {
-    setOpen(true);
-  };
-
   const renderDrink = () => {
     return (
       <div>
@@ -86,7 +76,7 @@ export default function Random({ currentPage, handlePageChange }) {
           handlePageChange={handlePageChange}
           sx={{ paddingBottom: 2 }}
         />
-        <IconButton onClick={() => [handleSaveDrink(randomDrinkData), handleTooltipOpen]} style={{cursor:"pointer"}} >
+        <IconButton onClick={() => handleSaveDrink(randomDrinkData)} style={{cursor:"pointer"}} >
             <BookmarkIcon />
         </IconButton>                        
       </div>
