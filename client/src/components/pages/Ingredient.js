@@ -7,7 +7,7 @@ export default function Ingredient() {
             <div className="landingUI">
                 <img src={logo} className="App-logo" alt="logo" />
                 <p>
-                    This is a future implementation!
+                    Explore by ingredients implementation coming soon!
                 </p>
             </div>
         </div>

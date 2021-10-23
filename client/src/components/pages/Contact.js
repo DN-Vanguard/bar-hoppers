@@ -14,9 +14,9 @@ export default function Contact() {
 
     return (
         <div className="App ContactPageUI">
-            <Grid>
+            <Grid style={{justifyContent: "center", marginTop: 40}}>
                 <Card style={{ maxWidth: 400, padding: "60px 20px", margin: "0 auto" }}>
-                    <CardContent>
+                    <CardContent style={{padding: 2}}>
                         <Typography gutterBottom variant="h5">
                             Contact Us!
                         </Typography>
@@ -41,7 +41,7 @@ export default function Contact() {
                                     <TextField label="Message" multiline rows={4} placeholder="Type your message here" variant="outlined" fullWidth required />
                                 </Grid>
                                 <Grid item xs={12}>
-                                    <Button type="submit" variant="contained" color="secondary" fullWidth>Submit</Button>
+                                    <Button type="submit" variant="contained" backgroundcolor="#3b8ad9" fullWidth>Submit</Button>
                                 </Grid>
                             </Grid>
                         </form>
@@ -49,16 +49,6 @@ export default function Contact() {
                 </Card>
             </Grid>
         </div>
-
-
-        /*<div className="App">
-            <div className="landingUI">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                    This is Contact Us.
-                </p>
-            </div>
-        </div>*/
     );
 }
 
