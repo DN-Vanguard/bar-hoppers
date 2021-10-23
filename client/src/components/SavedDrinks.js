@@ -1,4 +1,4 @@
-import { Avatar, Stack } from "@mui/material"
+import { Avatar, Stack, IconButton } from "@mui/material"
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { REMOVE_DRINK } from "../utils/mutations"
 import { GET_ME } from "../utils/queries"
@@ -48,8 +48,10 @@ const SavedDrinks = ({currentPage, handlePageChange}) => {
                                 <Avatar alt={drink.drinkName} src={`${drink.drinkImg}/preview`} sx={{ width: 75, height: 75, zIndex: -1 }} />
                                 <label>{drink.drinkName}</label>
                             </div>
-                            <div onClick={() => handleDeleteDrink(drink.drinkID)} style={{cursor:"pointer"}}>
-                                    <DeleteForeverIcon />
+                            <div>
+                            <IconButton onClick={() => handleDeleteDrink(drink.drinkID)} style={{cursor:"pointer"}} >
+                                <DeleteForeverIcon />
+                            </IconButton>
                             </div>
                         </div>
                     )
