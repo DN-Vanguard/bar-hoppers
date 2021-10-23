@@ -10,6 +10,11 @@ export default function Profile() {
         console.error(error)
     }
     const userData = data?.me;
+
+    if (loading) {
+        return <h2>LOADING...</h2>;
+    }
+
     return (
         <div className="App">
             <div className="landingUI">
