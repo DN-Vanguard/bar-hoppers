@@ -67,7 +67,9 @@ THEN I am LOGGED OUT of my account
 
 
 ## <u>Images</u>
-<img src="assets/img/drinkdescr.png" width="600" height="600" alt="drink description"/>
+<img src="assets/img/drinkdesc.png" width="600" height="600" alt="drink description"/>
+<img src="assets/img/homepage.png" width="600" height="600" alt="homepage"/>
+
 
 
 ## <u>TEchnologies Used</u>
