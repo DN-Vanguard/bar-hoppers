@@ -19,6 +19,7 @@ import LetterResults from './pages/LetterResults';
 import CategoryResults from './pages/CategoryResults';
 import TypeResults from './pages/TypeResults';
 import GlassResults from './pages/GlassResults';
+import Party from './pages/Party';
 
 
 export default function MainUI() {
@@ -27,7 +28,7 @@ export default function MainUI() {
     const [value, setValue] = useState(0);
 
     useEffect(() => {
-        if ( (currentPage === "Suggested") || (currentPage === "Letter") || (currentPage === "Ingredient") || (currentPage === "Glass") || (currentPage === "Category") || (currentPage === "Type") || (currentPage === "Random") || (currentPage === "Contact") || (currentPage === "Search") || (currentPage === "LetterResults") || (currentPage === "CategoryResults") || (currentPage === "GlassResults") || (currentPage === "TypeResults") || (currentPage.match(/^\d{5,6}$/)) ) {
+        if ( (currentPage === "Suggested") || (currentPage === "Letter") || (currentPage === "Ingredient") || (currentPage === "Glass") || (currentPage === "Category") || (currentPage === "Type") || (currentPage === "Random") || (currentPage === "Contact") || (currentPage === "Search") || (currentPage === "LetterResults") || (currentPage === "CategoryResults") || (currentPage === "GlassResults") || (currentPage === "TypeResults") || (currentPage === "Party") || (currentPage.match(/^\d{5,6}$/)) ) {
             setValue("");
         }
     }, [currentPage])
@@ -86,6 +87,9 @@ export default function MainUI() {
         }
         if (currentPage === "TypeResults") {
             return <TypeResults currentPage={currentPage} handlePageChange={handlePageChange} />
+        }
+        if (currentPage === "Party") {
+            return <Party currentPage={currentPage} handlePageChange={handlePageChange} />;
         }
 
     };
