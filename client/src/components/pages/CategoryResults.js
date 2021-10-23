@@ -1,23 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import "../../App.css"
-import Avatar from '@mui/material/Avatar';
-// import DrinkDetail from './DrinkDetail';
 import { filterCategory } from '../../utils/API';
+import React, { useEffect, useState } from 'react';
+import Avatar from '@mui/material/Avatar';
+import "../../App.css";
 
+export default function CategoryResults({currentPage, handlePageChange, query}) {
+    const [categoryResults, setCategoryResults] = useState([]);
 
-export default function CategoryResults({ currentPage, handlePageChange }) {
-    const [categoryData, setCategoryData] = useState([]);
+    // console.log(query);
+
     useEffect(() => {
-        const loadCategory = async (event) => {
+        const filterCategoryResults = async (event) => {
 
             try {
-                const response = await filterCategory();
+                const response = await filterCategory(query);
                 if (!response.ok) {
                     throw new Error('Umm... try again?');
                 }
                 const { drinks } = await response.json();
                 // Use the following console log to see the parsed response structure.
                 // console.log(drinks)
+                if (!drinks) {
+                    setCategoryResults(drinks);
+                }
                 const drinkData = drinks.map((drink) => ({
                     drinkID: drink.idDrink,
                     drinkName: drink.strDrink,
@@ -29,34 +33,41 @@ export default function CategoryResults({ currentPage, handlePageChange }) {
                 }));
                 // Test final drinkData.
                 // console.log(drinkData);
-                setCategoryData(drinkData);
+                setCategoryResults(drinkData);
 
-            } catch (err) {
+            }  catch (err) {
                 console.error(err);
             }
-        };
+        }
 
-        loadCategory();
+        filterCategoryResults();
 
-    }, [setCategoryData])
+    }, [query, setCategoryResults])
 
-    // console.log(categoryData);
+    // console.log(CategoryResultsResults);
+
+    const rendercategoryResults = () => {
+        return (
+            categoryResults.map((drink) => {
+                return (
+                    <div key={drink.drinkID} className="SuggestedPageDisplay" sx={{ height: { xs: 120, sm: 150 } }} onClick={() => handlePageChange(drink.drinkID)}>
+                        <Avatar alt={drink.drinkName} src={`${drink.drinkImg}/preview`} sx={{ width: { xs: 75, sm: 100 }, height: { xs: 75, sm: 100 }, zIndex: -1 }} />
+                        <label>{drink.drinkName}</label>
+                    </div>
+                )
+            })
+        )
+    }
 
     return (
         <div>
             <div className="SuggestedPageUI">
-                <h3 className="Header-SuggestedDrink">Suggested Drinks</h3>
+                <h3 className="Header-SuggestedDrink">Category results for "{query}":</h3>
                 <div className="AllSuggestedDrinks">
-                    {categoryData.map((drink) => {
-                        return (
-                            <div key={drink.drinkID} className="SuggestedPageDisplay" sx={{height: {xs: 120, sm:150}}} onClick={() => handlePageChange(drink.drinkID)}>
-                                <Avatar alt={drink.drinkName} src={`${drink.drinkImg}/preview`} sx={{ width: {xs: 75, sm: 100}, height: {xs: 75, sm:100}, zIndex: -1 }} />
-                                <label>{drink.drinkName}</label>
-                            </div>
-                        )
-                    })}
+                    {categoryResults ? rendercategoryResults() : <h3 className="NoResult">No results for "{query}"</h3>}
                 </div>
             </div>
+
         </div>
-    );
+    )
 }

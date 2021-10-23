@@ -85,12 +85,19 @@
     max-lines: 3;
 }
 
-/* LETTER'S STYLING */
+/* LETTER'S, CATEGORY, GLASS AND TYPE STYLING */
 .alphabetContainer {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
+}
+.caGlTyContainer {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 5rem;
 }
 .avatarStyles {
     padding: 5px;
