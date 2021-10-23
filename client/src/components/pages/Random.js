@@ -63,13 +63,13 @@ export default function Random({ currentPage, handlePageChange }) {
         <div className="App">
             <div className="landingUI">
                 {randomDrinkData ? renderDrink() : <img src={logo} className="App-logo" alt="logo" />}
-                <div>
+                <div className="RandomOptions">
                     <Button sx={{ marginTop: 2 }} variant="contained" onClick={() => handleClick("solo")}>Give Me "Solo"</Button>
-                    <label>"Han Solo is your friend!?"</label>
+                    {/* <label>"Han Solo is your friend!?"</label> */}
                 </div>
-                <div>
+                <div className="RandomOptions">
                     <Button sx={{ marginTop: 2 }} variant="contained" onClick={() => handleClick("party")}>PARTAYYY!</Button>
-                    <label>Party like the Great Gatsby</label>
+                    {/* <label>Party like the Great Gatsby!</label> */}
                 </div>
             </div>
         </div>
