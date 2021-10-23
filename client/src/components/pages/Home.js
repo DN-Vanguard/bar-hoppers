@@ -78,7 +78,7 @@ export default function Home({ currentPage, handlePageChange }) {
                             <div className="ExploreByLine">
                                 <div className="ExploreByButton" onClick={() => handlePageChange("Letter")}>
                                     <Avatar alt="Letter" sx={{ width: 80, height: 80, zIndex: -1 }}><SortByAlphaIcon fontSize="large" /></Avatar>
-                                    <label>Name</label>
+                                    <label>Letter</label>
                                 </div>
                                 <div className="ExploreByButton" onClick={() => handlePageChange("Ingredient")}>
                                     <Avatar alt="Ingredient" sx={{ width: 80, height: 80, zIndex: -1 }}><ScienceIcon fontSize="large" /></Avatar>

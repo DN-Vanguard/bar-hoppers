@@ -7,21 +7,17 @@ import BookmarkIcon from '@mui/icons-material/Bookmark';
 import MapIcon from '@mui/icons-material/Map';
 import Paper from '@mui/material/Paper';
 
-export default function BottomNav({ currentPage, handlePageChange }) {
-    const [value, setValue] = React.useState(0);
+export default function BottomNav({ currentPage, handlePageChange, value, setValue }) {
     return (
         <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, paddingBottom: { xs: 2, sm: 0 } }} elevation={3}>
             <BottomNavigation
                 showLabels
                 value={value}
-                onChange={(event, newValue) => {
-                    setValue(newValue);
-                }}
             >
-                <BottomNavigationAction label="Home" icon={<HomeIcon />} onClick={() => handlePageChange("Home")} />
-                <BottomNavigationAction label="Profile" icon={<PersonIcon />} onClick={() => handlePageChange("Profile")} />
-                <BottomNavigationAction label="Favorite" icon={<BookmarkIcon />} onClick={() => handlePageChange("Favorite")} />
-                <BottomNavigationAction label="Map" icon={<MapIcon />} onClick={() => handlePageChange("Map")} />
+                <BottomNavigationAction label="Home" icon={<HomeIcon />} onClick={() => {setValue(0); handlePageChange("Home");}} />
+                <BottomNavigationAction label="Profile" icon={<PersonIcon />} onClick={() => {setValue(1); handlePageChange("Profile");}} />
+                <BottomNavigationAction label="Favorite" icon={<BookmarkIcon />} onClick={() => {setValue(2); handlePageChange("Favorite");}} />
+                <BottomNavigationAction label="Map" icon={<MapIcon />} onClick={() => {setValue(3); handlePageChange("Map");}} />
             </BottomNavigation>
         </Paper>
     );
