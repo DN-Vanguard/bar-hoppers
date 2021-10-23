@@ -16,6 +16,7 @@ import Contact from './pages/Contact';
 import DrinkDetail from './pages/DrinkDetail';
 import Search from './pages/Search';
 import LetterResults from './pages/LetterResults';
+import Party from './pages/Party';
 
 
 export default function MainUI() {
@@ -24,7 +25,7 @@ export default function MainUI() {
     const [value, setValue] = useState(0);
 
     useEffect(() => {
-        if ( (currentPage === "Suggested") || (currentPage === "Letter") || (currentPage === "Ingredient") || (currentPage === "Glass") || (currentPage === "Category") || (currentPage === "Type") || (currentPage === "Random") || (currentPage === "Contact") || (currentPage === "Search") || (currentPage === "LetterResults") || (currentPage.match(/^\d{5,6}$/)) ) {
+        if ( (currentPage === "Suggested") || (currentPage === "Letter") || (currentPage === "Ingredient") || (currentPage === "Glass") || (currentPage === "Category") || (currentPage === "Type") || (currentPage === "Random") || (currentPage === "Contact") || (currentPage === "Search") || (currentPage === "LetterResults") || (currentPage === "Party") || (currentPage.match(/^\d{5,6}$/)) ) {
             setValue("");
         }
     }, [currentPage])
@@ -74,6 +75,9 @@ export default function MainUI() {
         }
         if (currentPage === "LetterResults") {
             return <LetterResults currentPage={currentPage} handlePageChange={handlePageChange} query={query} />
+        }
+        if (currentPage === "Party") {
+            return <Party currentPage={currentPage} handlePageChange={handlePageChange} />;
         }
 
     };

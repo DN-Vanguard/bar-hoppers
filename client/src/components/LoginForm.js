@@ -4,7 +4,8 @@ import { LOGIN_USER } from '../utils/mutations';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { Box } from '@mui/system';
-import { Modal, Alert, Button, FormControl, Input, InputLabel } from '@mui/material';
+// There is an Alert down here
+import { Modal, Button, FormControl, Input, InputLabel } from '@mui/material'; 
 
 const style = {
   position: 'absolute',
@@ -21,7 +22,7 @@ const style = {
 const LoginForm = () => {
   const [userFormData, setUserFormData] = useState({ email: '', password: '' });
   const [validated] = useState(false);
-  const [showAlert, setShowAlert] = useState(false);
+  // const [showAlert, setShowAlert] = useState(false);
   const [loginUser] = useMutation(LOGIN_USER);
 
   const [open, setOpen] = React.useState(false);
@@ -50,7 +51,7 @@ const LoginForm = () => {
       Auth.login(data.login.token);
     } catch (err) {
       console.error(err);
-      setShowAlert(true);
+      // setShowAlert(true);
     }
 
     setUserFormData({
