@@ -1,22 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import "../../App.css"
-import { cocktailPopular } from '../../utils/API';
+import { filterType } from '../../utils/API';
+import React, { useEffect, useState } from 'react';
 import Avatar from '@mui/material/Avatar';
-// import DrinkDetail from './DrinkDetail';
+import "../../App.css";
 
-export default function Suggested({ currentPage, handlePageChange }) {
-    const [popularDrinkData, setPopularDrinkData] = useState([]);
+export default function AlcoholicResults({currentPage, handlePageChange, query}) {
+    const [alcoholicResults, setAlcoholicResults] = useState([]);
+
+    // console.log(query);
+
     useEffect(() => {
-        const loadPopular = async (event) => {
+        const filterAlcoholicResults = async (event) => {
 
             try {
-                const response = await cocktailPopular();
+                const response = await filterType(query);
                 if (!response.ok) {
                     throw new Error('Umm... try again?');
                 }
                 const { drinks } = await response.json();
                 // Use the following console log to see the parsed response structure.
                 // console.log(drinks)
+                if (!drinks) {
+                    setAlcoholicResults(drinks);
+                }
                 const drinkData = drinks.map((drink) => ({
                     drinkID: drink.idDrink,
                     drinkName: drink.strDrink,
@@ -28,34 +33,41 @@ export default function Suggested({ currentPage, handlePageChange }) {
                 }));
                 // Test final drinkData.
                 // console.log(drinkData);
-                setPopularDrinkData(drinkData);
+                setAlcoholicResults(drinkData);
 
-            } catch (err) {
+            }  catch (err) {
                 console.error(err);
             }
-        };
+        }
 
-        loadPopular();
+        filterAlcoholicResults();
 
-    }, [setPopularDrinkData])
+    }, [query, setAlcoholicResults])
 
-    // console.log(popularDrinkData);
+    // console.log(AlcoholicResultsResults);
+
+    const renderAlcoholicResults = () => {
+        return (
+            alcoholicResults.map((drink) => {
+                return (
+                    <div key={drink.drinkID} className="SuggestedPageDisplay" sx={{ height: { xs: 120, sm: 150 } }} onClick={() => handlePageChange(drink.drinkID)}>
+                        <Avatar alt={drink.drinkName} src={`${drink.drinkImg}/preview`} sx={{ width: { xs: 75, sm: 100 }, height: { xs: 75, sm: 100 }, zIndex: -1 }} />
+                        <label>{drink.drinkName}</label>
+                    </div>
+                )
+            })
+        )
+    }
 
     return (
         <div>
             <div className="SuggestedPageUI">
-                <h3 className="Header-SuggestedDrink">Suggested Drinks</h3>
+                <h3 className="Header-SuggestedDrink">Types of Drinks that are "{query}":</h3>
                 <div className="AllSuggestedDrinks">
-                    {popularDrinkData.map((drink) => {
-                        return (
-                            <div key={drink.drinkID} className="SuggestedPageDisplay" sx={{height: {xs: 120, sm:150}}} onClick={() => handlePageChange(drink.drinkID)}>
-                                <Avatar alt={drink.drinkName} src={`${drink.drinkImg}/preview`} sx={{ width: {xs: 75, sm: 100}, height: {xs: 75, sm:100}, zIndex: -1 }} />
-                                <label>{drink.drinkName}</label>
-                            </div>
-                        )
-                    })}
+                    {alcoholicResults ? renderAlcoholicResults() : <h3 className="NoResult">No results for "{query}"</h3>}
                 </div>
             </div>
+
         </div>
-    );
+    )
 }

@@ -56,13 +56,13 @@ export default function MainUI() {
             return <Ingredient currentPage={currentPage} handlePageChange={handlePageChange} />;
         }
         if (currentPage === "Glass") {
-            return <Glass currentPage={currentPage} handlePageChange={handlePageChange} setQuery={query} />;
+            return <Glass currentPage={currentPage} handlePageChange={handlePageChange} setQuery={setQuery} />;
         }
         if (currentPage === "Category") {
-            return <Category currentPage={currentPage} handlePageChange={handlePageChange} setQuery={query} />;
+            return <Category currentPage={currentPage} handlePageChange={handlePageChange} setQuery={setQuery} />;
         }
         if (currentPage === "Type") {
-            return <Type currentPage={currentPage} handlePageChange={handlePageChange} setQuery={query} />;
+            return <Type currentPage={currentPage} handlePageChange={handlePageChange} setQuery={setQuery} />;
         }
         if (currentPage === "Random") {
             return <Random currentPage={currentPage} handlePageChange={handlePageChange} />;
@@ -80,16 +80,16 @@ export default function MainUI() {
             return <LetterResults currentPage={currentPage} handlePageChange={handlePageChange} query={query} />
         }
         if (currentPage === "CategoryResults") {
-            return <CategoryResults currentPage={currentPage} handlePageChange={handlePageChange} />
+            return <CategoryResults currentPage={currentPage} handlePageChange={handlePageChange} query={query} />
         }
         if (currentPage === "GlassResults") {
-            return <GlassResults currentPage={currentPage} handlePageChange={handlePageChange} />
+            return <GlassResults currentPage={currentPage} handlePageChange={handlePageChange} query={query} />
         }
         if (currentPage === "TypeResults") {
-            return <TypeResults currentPage={currentPage} handlePageChange={handlePageChange} />
+            return <TypeResults currentPage={currentPage} handlePageChange={handlePageChange} query={query} />
         }
         if (currentPage === "Party") {
-            return <Party currentPage={currentPage} handlePageChange={handlePageChange} />;
+            return <Party currentPage={currentPage} handlePageChange={handlePageChange} />
         }
 
     };
