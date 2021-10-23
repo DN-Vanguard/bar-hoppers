@@ -29,7 +29,7 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
-        saveDrink: async (parent, {drink}, context) => {
+        saveDrink: async (parent, drink, context) => {
             // const drink = { ...args };
             if (context.user) {
             //   const user = await User.findOneAndUpdate(
@@ -40,9 +40,9 @@ const resolvers = {
             //   return user;
             //###################################################
                 return User.findOneAndUpdate(
-                    {_id:context.user._id},
-                    {$addToSet:{savedDrinks:{...drink}}},
-                    {new:true}
+                    {_id: context.user._id},
+                    {$addToSet: {savedDrinks: drink }},
+                    {new: true}
                 )
             }
             throw new AuthenticationError('Please sign in');
@@ -51,14 +51,14 @@ const resolvers = {
             if (context.user) {
             //   const user = await User.findOneAndUpdate(
             //     { _id: context.user._id },
-            //     { $addToSet: { savedDrinks: { drinkId: drinkId } } },
+            //     { $addToSet: { savedDrinks: { drinkID: drinkID } } },
             //     { new: true }
             //   );
             //   return user;
-            //###################################################
+            //##################################################
                 return User.findOneAndUpdate(
                     {_id: context.user._id},
-                    {$pull: {savedDrinks: {drinkID}}},
+                    {$pull: {savedDrinks: {drinkID : drinkID}}},
                     {new: true}
                 )
             }

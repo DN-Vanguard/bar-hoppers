@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-// search thecocktaildb by drinkId
+// search thecocktaildb by drinkID
 export const searchByID = (query) => {
   return fetch(`https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_COCKTAILDB_KEY}/lookup.php?i=${query}`);
 };
