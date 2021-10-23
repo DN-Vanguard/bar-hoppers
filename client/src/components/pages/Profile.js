@@ -1,15 +1,15 @@
 import React from 'react';
 import logo from '../../logo-bh.png';
 import "../../App.css"
+import SavedDrinks from '../SavedDrinks';
 
-export default function Profile() {
+export default function Profile({ handlePageChange }) {
     return (
         <div className="App">
             <div className="landingUI">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                    This is Profile
-                </p>
+                <div>
+                    <SavedDrinks handlePageChange={handlePageChange} /> 
+                </div>
             </div>
         </div>
     );
