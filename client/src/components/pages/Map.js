@@ -8,7 +8,7 @@ export default function Map() {
             <div className="landingUI">
                 <img src={logo} className="App-logo" alt="logo" />
                 <p>
-                This is a future implementation!
+                    Bars Map is coming soon!
                 </p>
             </div>
         </div>
