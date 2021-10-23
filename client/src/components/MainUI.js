@@ -14,10 +14,13 @@ import Type from './pages/Type';
 import Random from './pages/Random';
 import Contact from './pages/Contact';
 import DrinkDetail from './pages/DrinkDetail';
+import Search from './pages/Search';
+import LetterResults from './pages/LetterResults';
 
 
 function MainUI() {
     const [currentPage, setCurrentPage] = useState("Home");
+    const [query, setQuery] = useState();
 
     const renderPage = () => {
         if (currentPage === "Home") {
@@ -36,7 +39,7 @@ function MainUI() {
             return <Suggested currentPage={currentPage} handlePageChange={handlePageChange}/>;
         }
         if (currentPage === "Letter") {
-            return <Letter currentPage={currentPage} handlePageChange={handlePageChange}/>;
+            return <Letter currentPage={currentPage} handlePageChange={handlePageChange} setQuery={setQuery}/>;
         }
         if (currentPage === "Ingredient") {
             return <Ingredient currentPage={currentPage} handlePageChange={handlePageChange}/>;
@@ -56,9 +59,16 @@ function MainUI() {
         if (currentPage === "Contact") {
             return <Contact currentPage={currentPage} handlePageChange={handlePageChange}/>;
         }
+        if (currentPage === "Search") {
+            return <Search currentPage={currentPage} handlePageChange={handlePageChange} query={query} />
+        }
         if (currentPage.match(/^\d{5,6}$/)) {
             return <DrinkDetail drinkID={currentPage} />
         }
+        if (currentPage === "LetterResults") {
+            return <LetterResults currentPage={currentPage} handlePageChange={handlePageChange} query={query} />
+        }
+
     };
 
  
@@ -67,7 +77,7 @@ function MainUI() {
 
     return (
         <div>
-            <Appbar currentPage={currentPage} handlePageChange={handlePageChange} />
+            <Appbar currentPage={currentPage} handlePageChange={handlePageChange} setQuery={setQuery}/>
             {renderPage()}
             <BottomNav currentPage={currentPage} handlePageChange={handlePageChange} />
         </div>

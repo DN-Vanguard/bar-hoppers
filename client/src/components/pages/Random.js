@@ -20,27 +20,52 @@ export default function Random({ currentPage, handlePageChange }) {
 
   const [saveDrink] = useMutation(SAVE_DRINK);
 
-  const handleClick = async (event) => {
-    try {
-      const response = await cocktailRandom();
-      console.log(response);
-      if (!response.ok) {
-        throw new Error("Umm... try again?");
+  const handleClick = async (type) => {
+    if (type === "solo") {
+      try {
+        const response = await cocktailRandom();
+        if (!response.ok) {
+          throw new Error("Umm... try again?");
+        }
+        const parsedRes = await response.json();
+        // Use the following console log to see the parsed response structure.
+        // console.log(parsedRes.drinks[0])
+        const drinkData = {
+          drinkID: parsedRes.drinks[0].idDrink,
+          drinkName: parsedRes.drinks[0].strDrink,
+          drinkCategory: parsedRes.drinks[0].strCategory,
+          drinkAlcoholic: parsedRes.drinks[0].strAlcoholic,
+          drinkGlass: parsedRes.drinks[0].strGlass,
+          drinkInstructions: parsedRes.drinks[0].strInstructions,
+          drinkImg: parsedRes.drinks[0].strDrinkThumb,
+        };
+        // Test final drinkData.
+        // console.log(drinkData);
+        setRandomDrinkData(drinkData);
+      } catch (err) {
+        console.error(err);
       }
-      const parsedRes = await response.json();
-      // Use the following console log to see the parsed response structure.
-      const drinkData = {
-        drinkID: parsedRes.drinks[0].idDrink,
-        drinkName: parsedRes.drinks[0].strDrink,
-        drinkCategory: parsedRes.drinks[0].strCategory,
-        drinkAlcoholic: parsedRes.drinks[0].strAlcoholic,
-        drinkGlass: parsedRes.drinks[0].strGlass,
-        drinkInstructions: parsedRes.drinks[0].strInstructions,
-        drinkImg: parsedRes.drinks[0].strDrinkThumb,
-      };
-      setRandomDrinkData(drinkData);
-    } catch (err) {
-      console.error(err);
+    }
+    if (type === "party") {
+      try {
+        const response = await cocktailRandom();
+        if (!response.ok) {
+          throw new Error("Umm... try again?");
+        }
+        const parsedRes = await response.json();
+        // Use the following console log to see the parsed response structure.
+        // console.log(parsedRes.drinks[0])
+        const drinkData = {
+          drinkID: parsedRes.drinks[0].idDrink,
+          drinkName: parsedRes.drinks[0].strDrink,
+          drinkImg: parsedRes.drinks[0].strDrinkThumb,
+        };
+        // Test final drinkData.
+        // console.log(drinkData);
+        setRandomDrinkData(drinkData);
+      } catch (err) {
+        console.error(err);
+      }
     }
   };
 
@@ -68,7 +93,9 @@ export default function Random({ currentPage, handlePageChange }) {
           handlePageChange={handlePageChange}
           sx={{ paddingBottom: 2 }}
         />
-        <SaveAltIcon onClick={() => handleSaveDrink(randomDrinkData)}></SaveAltIcon>
+        <SaveAltIcon
+          onClick={() => handleSaveDrink(randomDrinkData)}
+        ></SaveAltIcon>
       </div>
     );
   };
@@ -81,13 +108,26 @@ export default function Random({ currentPage, handlePageChange }) {
         ) : (
           <img src={logo} className="App-logo" alt="logo" />
         )}
-        <Button
-          sx={{ marginTop: 2 }}
-          variant="contained"
-          onClick={() => handleClick()}
-        >
-          DRINK ME
-        </Button>
+        <div>
+          <Button
+            sx={{ marginTop: 2 }}
+            variant="contained"
+            onClick={() => handleClick("solo")}
+          >
+            Give Me "Solo"
+          </Button>
+          <label>"Han Solo is your friend!?"</label>
+        </div>
+        <div>
+          <Button
+            sx={{ marginTop: 2 }}
+            variant="contained"
+            onClick={() => handleClick("party")}
+          >
+            PARTAYYY!
+          </Button>
+          <label>Party like the Great Gatsby</label>
+        </div>
       </div>
     </div>
   );

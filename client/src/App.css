@@ -7,19 +7,38 @@
     pointer-events: none;
 }
 
-.HomePageUI {
+.Drawer-logo-box {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.Drawer-logo {
+    height: 6.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.HomePageUI, .SuggestedPageUI, .DrinkDetailUI, .ContactPageUI {
     padding-top: 3rem;
-    /* padding: 3rem 1rem 3rem 1rem; */
-    /* display: flex; */
-    /* flex-direction: column;
-    align-items: flex-start; */
-    /* justify-content: center; */
     font-size: calc(10px + 2vmin);
 }
 
-.SuggestedPageUI {
-    padding-top: 3rem;
-    font-size: calc(10px + 2vmin);
+.DrinkDetailUI {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 5rem;
+}
+
+.DrinkImg {
+    width: 100%;
+    border-radius: 1rem;
+}
+
+.DetailsAboutDrink {
+    display: flex;
+    flex-direction: row;
+    width: 65%;
+    justify-content: space-between;
 }
 
 .AllSuggestedDrinks {
@@ -50,19 +69,14 @@
 
 /* LETTER'S STYLING */
 .alphabetContainer {
-    margin: 4rem 0.25rem 6rem 0.25rem;
+    margin-top: 12rem;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    align-items: center;
+    justify-content: center;
 }
-.buttonStyles{
-    padding: 0.5rem;
-    flex: 2 0 auto;
-}
-.buttonStyles button{
-    font-size: 20px;
-    border-radius: 50%;
+.avatarStyles {
+    padding: 5px;
 }
 
 /* ---------------- */
@@ -76,25 +90,64 @@
 .SuggestedDrink {
     overflow: auto;
     scroll-behavior: smooth;
-    /* padding: 0 1rem 0 1rem; */
 }
 
 .Header-SuggestedDrink {
     padding: 0.5rem 0 0 1rem;
 }
 
+.Header-DrinkDetail {
+    padding: 0.1rem 0 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .SuggestedDrinkDisplay {
+    padding-top: 0.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100px;
     height: 150px;
+    flex: 1 0 auto;
+}
+
+.SuggestedDrinkDisplay label{
+    font-size: medium;
+    word-wrap: normal;
+    text-align: center;
+}
+
+.ExploreByHomeSec {
+    padding: 0 1rem 0 1rem;
+}
+
+.ExploreByDisplay {
+    padding-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ExploreByLine {
+    display: flex;
+    flex-direction: row;
+}
+
+.ExploreByButton {
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100px;
+    height: 120px;
     flex-grow: 0;
     flex-shrink: 0;
     flex-basis: auto;
 }
 
-.SuggestedDrinkDisplay label{
+.ExploreByButton label {
     font-size: medium;
     word-wrap: normal;
     text-align: center;
