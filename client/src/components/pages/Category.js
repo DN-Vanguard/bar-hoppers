@@ -21,7 +21,7 @@ export default function Letter({ currentPage, handlePageChange, setQuery }) {
       stateLtrNum.map((character) => {
         return (
           <div key={character} className="avatarStyles" onClick={() => {setQuery(character); handlePageChange("LetterResults")}}>
-            <Avatar variant="outlined" alt={character} sx={{ width: 50, height: 50, fontSize: "x-large",  backgroundColor: "lightseagreen" }}>{character}</Avatar>
+            <Avatar variant="outlined" alt={character} sx={{ width: 50, height: 50, fontSize: "x-large" }}>{character}</Avatar>
           </div>
         )
       }))
