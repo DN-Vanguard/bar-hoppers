@@ -78,7 +78,7 @@ export default function Random({ currentPage, handlePageChange }) {
         />
         <IconButton onClick={() => handleSaveDrink(randomDrinkData)} style={{cursor:"pointer"}} >
             <BookmarkIcon />
-        </IconButton>                        
+        </IconButton>
       </div>
     );
   };
