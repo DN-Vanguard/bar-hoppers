@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Appbar from './Appbar';
 import BottomNav from './BottomNav';
 import Favorite from './pages/Favorite';
@@ -18,46 +18,53 @@ import Search from './pages/Search';
 import LetterResults from './pages/LetterResults';
 
 
-function MainUI() {
+export default function MainUI() {
     const [currentPage, setCurrentPage] = useState("Home");
     const [query, setQuery] = useState();
+    const [value, setValue] = useState(0);
+
+    useEffect(() => {
+        if ( (currentPage === "Suggested") || (currentPage === "Letter") || (currentPage === "Ingredient") || (currentPage === "Glass") || (currentPage === "Category") || (currentPage === "Type") || (currentPage === "Random") || (currentPage === "Contact") || (currentPage === "Search") || (currentPage === "LetterResults") || (currentPage.match(/^\d{5,6}$/)) ) {
+            setValue("");
+        }
+    }, [currentPage])
 
     const renderPage = () => {
         if (currentPage === "Home") {
-            return <Home currentPage={currentPage} handlePageChange={handlePageChange}/>;
+            return <Home currentPage={currentPage} handlePageChange={handlePageChange} />;
         }
         if (currentPage === "Profile") {
-            return <Profile currentPage={currentPage} handlePageChange={handlePageChange}/>;
+            return <Profile currentPage={currentPage} handlePageChange={handlePageChange} />;
         }
         if (currentPage === "Favorite") {
-            return <Favorite currentPage={currentPage} handlePageChange={handlePageChange}/>;
+            return <Favorite currentPage={currentPage} handlePageChange={handlePageChange} />;
         }
         if (currentPage === "Map") {
-            return <Map currentPage={currentPage} handlePageChange={handlePageChange}/>;
+            return <Map currentPage={currentPage} handlePageChange={handlePageChange} />;
         }
         if (currentPage === "Suggested") {
-            return <Suggested currentPage={currentPage} handlePageChange={handlePageChange}/>;
+            return <Suggested currentPage={currentPage} handlePageChange={handlePageChange} />;
         }
         if (currentPage === "Letter") {
-            return <Letter currentPage={currentPage} handlePageChange={handlePageChange} setQuery={setQuery}/>;
+            return <Letter currentPage={currentPage} handlePageChange={handlePageChange} setQuery={setQuery} />;
         }
         if (currentPage === "Ingredient") {
-            return <Ingredient currentPage={currentPage} handlePageChange={handlePageChange}/>;
+            return <Ingredient currentPage={currentPage} handlePageChange={handlePageChange} />;
         }
         if (currentPage === "Glass") {
-            return <Glass currentPage={currentPage} handlePageChange={handlePageChange}/>;
+            return <Glass currentPage={currentPage} handlePageChange={handlePageChange} />;
         }
         if (currentPage === "Category") {
-            return <Category currentPage={currentPage} handlePageChange={handlePageChange}/>;
+            return <Category currentPage={currentPage} handlePageChange={handlePageChange} />;
         }
         if (currentPage === "Type") {
-            return <Type currentPage={currentPage} handlePageChange={handlePageChange}/>;
+            return <Type currentPage={currentPage} handlePageChange={handlePageChange} />;
         }
         if (currentPage === "Random") {
-            return <Random currentPage={currentPage} handlePageChange={handlePageChange}/>;
+            return <Random currentPage={currentPage} handlePageChange={handlePageChange} />;
         }
         if (currentPage === "Contact") {
-            return <Contact currentPage={currentPage} handlePageChange={handlePageChange}/>;
+            return <Contact currentPage={currentPage} handlePageChange={handlePageChange} />;
         }
         if (currentPage === "Search") {
             return <Search currentPage={currentPage} handlePageChange={handlePageChange} query={query} />
@@ -71,17 +78,13 @@ function MainUI() {
 
     };
 
- 
-
     const handlePageChange = (page) => setCurrentPage(page);
 
     return (
         <div>
-            <Appbar currentPage={currentPage} handlePageChange={handlePageChange} setQuery={setQuery}/>
+            <Appbar currentPage={currentPage} handlePageChange={handlePageChange} setQuery={setQuery} />
             {renderPage()}
-            <BottomNav currentPage={currentPage} handlePageChange={handlePageChange} />
+            <BottomNav currentPage={currentPage} handlePageChange={handlePageChange} value={value} setValue={setValue} />
         </div>
     );
 }
-
-export default MainUI;
