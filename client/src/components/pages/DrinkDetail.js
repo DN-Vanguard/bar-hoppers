@@ -1,14 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import "../../App.css"
 import { searchByID } from '../../utils/API';
+import { useMutation } from '@apollo/client';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
+import { IconButton } from '@mui/material';
+import { getSavedDrinkIDs, saveDrinkIDs } from '../../utils/localStorage';
+import { SAVE_DRINK } from '../../utils/mutations';
+import Auth from '../../utils/auth';
 
 export default function DrinkDetail(input) {
     const [drinkData, setDrinkData] = useState([]);
+    const [savedDrinkIDs, setSavedDrinkIDs] = useState(getSavedDrinkIDs);
 
     // console.log(drinkID.drinkID);
+    useEffect(() => {
+        return () => saveDrinkIDs(savedDrinkIDs);
+    });
+
+    const [saveDrink] = useMutation(SAVE_DRINK);
 
     useEffect(() => {
+
         const loadDrinkDetail = async (event) => {
 
             try {
@@ -40,6 +52,21 @@ export default function DrinkDetail(input) {
         loadDrinkDetail();
     }, [input.drinkID, setDrinkData]);
 
+    const handleSaveDrink = async (drinkToSave) => {
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
+        if (!token) {
+            return false;
+        }
+        console.log(drinkToSave);
+
+        try {
+            await saveDrink({ variables: { ...drinkToSave }});
+            setSavedDrinkIDs([...savedDrinkIDs, drinkToSave.drinkID]);
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
     // console.log(drinkData)
 
     return (
@@ -48,7 +75,9 @@ export default function DrinkDetail(input) {
                 <div className="Header-DrinkDetail">
                     <h2>{drinkData.drinkName}</h2>
                     <div>
-                        <BookmarkIcon fontSize="large"/>
+                        <IconButton onClick={() => handleSaveDrink(drinkData)} style={{cursor:"pointer"}} >
+                            <BookmarkIcon sx={{ zIndex: -1}}/>
+                        </IconButton>
                     </div>
                 </div>
                 <img className="DrinkImg" src={drinkData.drinkImg} alt={drinkData.drinkName} />
@@ -58,9 +87,9 @@ export default function DrinkDetail(input) {
                 <h3>Details about the drink</h3>
                 <hr />
                 <div className="DetailsAboutDrink">
-                    <div>
+                    <div className="DetailsAboutDrinkLabel">
                         <p>Category:</p>
-                        <p>Alcoholic:</p>
+                        <p>Type:</p>
                         <p>Glass:</p>
                     </div>
                     <div>

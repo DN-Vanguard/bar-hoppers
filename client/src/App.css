@@ -27,12 +27,17 @@
     font-size: calc(10px + 2vmin);
 }
 
-.HomePageUI, .SuggestedPageUI, .DrinkDetailUI, .ContactPageUI, .RandomPageUI {
+.landingBanner {
+    width: 375px;
+    margin-bottom: 1rem;
+}
+
+.HomePageUI, .SuggestedPageUI, .DrinkDetailUI, .ContactPageUI, .RandomPageUI, .FavoritePageUI {
     padding-top: 3rem;
     font-size: calc(10px + 2vmin);
 }
 
-.DrinkDetailUI {
+.DrinkDetailUI, .FavoritePageUI {
     padding-left: 1rem;
     padding-right: 1rem;
     padding-bottom: 5rem;
@@ -46,8 +51,10 @@
 .DetailsAboutDrink {
     display: flex;
     flex-direction: row;
-    width: 65%;
-    justify-content: space-between;
+}
+
+.DetailsAboutDrinkLabel {
+    margin-right: 3rem;
 }
 
 .AllSuggestedDrinks {
@@ -64,9 +71,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 75px;
+    width: auto;
     flex-grow: 2;
-    flex-shrink: 0;
+    flex-shrink: 1;
     flex-basis: auto;
 }
 
@@ -75,18 +82,31 @@
     font-size: medium;
     word-wrap: normal;
     text-align: center;
+    max-lines: 3;
 }
 
-/* LETTER'S STYLING */
+/* LETTER'S, CATEGORY, GLASS AND TYPE STYLING */
 .alphabetContainer {
-    margin-top: 12rem;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
 }
+.caGlTyContainer {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 5rem;
+}
 .avatarStyles {
     padding: 5px;
+}
+
+.margin {
+    margin-top: 6rem;
+    margin-bottom: 2rem;
+    text-align: center;
 }
 
 /* ---------------- */
@@ -127,6 +147,7 @@
     font-size: medium;
     word-wrap: normal;
     text-align: center;
+    max-lines: 3;
 }
 
 .ExploreByHomeSec {
@@ -163,8 +184,6 @@
     text-align: center;
 }
   
-
-
 .DrinkDisplay {
     display: flex;
     flex-direction: column;
@@ -176,6 +195,7 @@
     padding: 0.5rem;
     font-size: medium;
     word-wrap: normal;
+    max-lines: 3;
 }
 
 .RandomOptions {
@@ -184,13 +204,39 @@
 }
 
 .RandomOptions Button {
-    padding: 1rem 0 1rem 0;
+    width: 10rem;
+    word-wrap: normal;
+    margin: 1rem 0 1rem 0;
+    padding: 1rem 1rem 1rem 1rem;
     font-weight: bold;
     border-radius: 5rem;
 }
 
 .RandomOptions label {
     padding-top: 0.5rem;
+}
+
+.FavoriteDrinkDisplay {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.FavoriteDrinkDisplayButton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 1px solid #3b8ad9;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin: 0.25rem;
+    width: 100vh;
+}
+
+.FavoriteDrinkDisplay label {
+    padding-Left: 1rem;
+    font-size: large;
+    font-weight: bold;
 }
   
 .NoResult {

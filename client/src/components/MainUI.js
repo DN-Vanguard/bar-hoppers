@@ -16,6 +16,10 @@ import Contact from './pages/Contact';
 import DrinkDetail from './pages/DrinkDetail';
 import Search from './pages/Search';
 import LetterResults from './pages/LetterResults';
+import CategoryResults from './pages/CategoryResults';
+import TypeResults from './pages/TypeResults';
+import GlassResults from './pages/GlassResults';
+import Party from './pages/Party';
 
 
 export default function MainUI() {
@@ -24,7 +28,7 @@ export default function MainUI() {
     const [value, setValue] = useState(0);
 
     useEffect(() => {
-        if ( (currentPage === "Suggested") || (currentPage === "Letter") || (currentPage === "Ingredient") || (currentPage === "Glass") || (currentPage === "Category") || (currentPage === "Type") || (currentPage === "Random") || (currentPage === "Contact") || (currentPage === "Search") || (currentPage === "LetterResults") || (currentPage.match(/^\d{5,6}$/)) ) {
+        if ( (currentPage === "Suggested") || (currentPage === "Letter") || (currentPage === "Ingredient") || (currentPage === "Glass") || (currentPage === "Category") || (currentPage === "Type") || (currentPage === "Random") || (currentPage === "Contact") || (currentPage === "Search") || (currentPage === "LetterResults") || (currentPage === "CategoryResults") || (currentPage === "GlassResults") || (currentPage === "TypeResults") || (currentPage === "Party") || (currentPage.match(/^\d{5,6}$/)) ) {
             setValue("");
         }
     }, [currentPage])
@@ -52,13 +56,13 @@ export default function MainUI() {
             return <Ingredient currentPage={currentPage} handlePageChange={handlePageChange} />;
         }
         if (currentPage === "Glass") {
-            return <Glass currentPage={currentPage} handlePageChange={handlePageChange} />;
+            return <Glass currentPage={currentPage} handlePageChange={handlePageChange} setQuery={setQuery} />;
         }
         if (currentPage === "Category") {
-            return <Category currentPage={currentPage} handlePageChange={handlePageChange} />;
+            return <Category currentPage={currentPage} handlePageChange={handlePageChange} setQuery={setQuery} />;
         }
         if (currentPage === "Type") {
-            return <Type currentPage={currentPage} handlePageChange={handlePageChange} />;
+            return <Type currentPage={currentPage} handlePageChange={handlePageChange} setQuery={setQuery} />;
         }
         if (currentPage === "Random") {
             return <Random currentPage={currentPage} handlePageChange={handlePageChange} />;
@@ -74,6 +78,18 @@ export default function MainUI() {
         }
         if (currentPage === "LetterResults") {
             return <LetterResults currentPage={currentPage} handlePageChange={handlePageChange} query={query} />
+        }
+        if (currentPage === "CategoryResults") {
+            return <CategoryResults currentPage={currentPage} handlePageChange={handlePageChange} query={query} />
+        }
+        if (currentPage === "GlassResults") {
+            return <GlassResults currentPage={currentPage} handlePageChange={handlePageChange} query={query} />
+        }
+        if (currentPage === "TypeResults") {
+            return <TypeResults currentPage={currentPage} handlePageChange={handlePageChange} query={query} />
+        }
+        if (currentPage === "Party") {
+            return <Party currentPage={currentPage} handlePageChange={handlePageChange} />
         }
 
     };

@@ -171,11 +171,11 @@ export default function Appbar({ currentPage, handlePageChange, setQuery }) {
             </List>
             <Divider />
             <List
-                sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, paddingBottom: 4 }}
-                onClick={toggleDrawer(anchor, false)}
+                sx={{ position: 'fixed', bottom: 0, left: 0, paddingBottom: 4 }}
+                onClick={() => {toggleDrawer(anchor, false); Auth.logout();}}
                 onKeyDown={toggleDrawer(anchor, false)}
             >
-                <ListItem button key="Logout" onClick={Auth.logout}>
+                <ListItem button key="Logout">
                     <ListItemIcon>
                         <LogoutIcon />
                     </ListItemIcon>

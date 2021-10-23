@@ -4,24 +4,28 @@ import { LOGIN_USER } from '../utils/mutations';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { Box } from '@mui/system';
-import { Modal, Alert, Button, FormControl, Input, InputLabel } from '@mui/material';
+// There is an Alert down here
+import { Modal, Button, FormControl, Input, InputLabel } from '@mui/material'; 
 
 const style = {
   position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
+  width: 250,
   bgcolor: '#FFF',
-  border: '2px solid #000',
+  borderStyle: 'none',
+  borderRadius: '1rem',
   boxShadow: 24,
   p: 4,
+  display: 'flex',
+  flexDirection: 'column'
 };
 
 const LoginForm = () => {
   const [userFormData, setUserFormData] = useState({ email: '', password: '' });
   const [validated] = useState(false);
-  const [showAlert, setShowAlert] = useState(false);
+  // const [showAlert, setShowAlert] = useState(false);
   const [loginUser] = useMutation(LOGIN_USER);
 
   const [open, setOpen] = React.useState(false);
@@ -50,7 +54,7 @@ const LoginForm = () => {
       Auth.login(data.login.token);
     } catch (err) {
       console.error(err);
-      setShowAlert(true);
+      // setShowAlert(true);
     }
 
     setUserFormData({
@@ -62,7 +66,7 @@ const LoginForm = () => {
 
   return (
     <>
-      <Button variant="contained" onClick={handleOpen}>Login</Button>
+      <Button variant="contained" onClick={handleOpen} sx={{fontSize: 'large', fontWeight: 'bold', borderRadius: '5rem'}}>Login</Button>
       <Modal open={open} onClose={handleClose}>
         <Box sx={style}
           component="form"
@@ -73,7 +77,7 @@ const LoginForm = () => {
           {/* <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
             Something went wrong with your login credentials!
           </Alert> */}
-          <FormControl>
+          <FormControl sx={{margin: '0.25rem 0.5rem 0.5rem 0.5rem'}}>
             <InputLabel htmlFor='email'>Email</InputLabel>
             <Input
               type='email'
@@ -85,7 +89,7 @@ const LoginForm = () => {
             {/* <Form.Control.Feedback type='invalid'>Email is required!</Form.Control.Feedback> */}
           </FormControl>
 
-          <FormControl>
+          <FormControl sx={{margin: '0.25rem 0.5rem 0.5rem 0.5rem'}}>
             <InputLabel htmlFor='password'>Password</InputLabel>
             <Input
               type='password'
@@ -99,8 +103,10 @@ const LoginForm = () => {
           <Button
             disabled={!(userFormData.email && userFormData.password)}
             type='submit'
-            variant='success'>
-            Submit
+            variant='success'
+            sx={{borderStyle: 'none', top: '1rem', backgroundColor: '#3b8ad9', color: 'white', width: 'fit-content', alignSelf: 'center', fontSize: 'large', fontWeight: 'bold', borderRadius: '5rem' }}
+            >
+            Login
           </Button>
         </Box>
       </Modal>

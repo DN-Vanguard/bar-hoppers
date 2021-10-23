@@ -1,17 +1,18 @@
-import { useEffect, useState } from "react"
-import { searchByName } from "../../utils/API";
+import { filterGlass } from '../../utils/API';
+import React, { useEffect, useState } from 'react';
 import Avatar from '@mui/material/Avatar';
+import "../../App.css";
 
-export default function Search({ currentPage, handlePageChange, query }) {
-    const [searchResults, setSearchResults] = useState([]);
+export default function GlassResults({currentPage, handlePageChange, query}) {
+    const [glassResults, setGlassResults] = useState([]);
 
     // console.log(query);
 
     useEffect(() => {
-        const perfSearch = async (event) => {
+        const filterGlassResults = async (event) => {
 
             try {
-                const response = await searchByName(query);
+                const response = await filterGlass(query);
                 if (!response.ok) {
                     throw new Error('Umm... try again?');
                 }
@@ -19,7 +20,7 @@ export default function Search({ currentPage, handlePageChange, query }) {
                 // Use the following console log to see the parsed response structure.
                 // console.log(drinks)
                 if (!drinks) {
-                    setSearchResults(drinks);
+                    setGlassResults(drinks);
                 }
                 const drinkData = drinks.map((drink) => ({
                     drinkID: drink.idDrink,
@@ -32,22 +33,22 @@ export default function Search({ currentPage, handlePageChange, query }) {
                 }));
                 // Test final drinkData.
                 // console.log(drinkData);
-                setSearchResults(drinkData);
+                setGlassResults(drinkData);
 
-            } catch (err) {
+            }  catch (err) {
                 console.error(err);
             }
         }
 
-        perfSearch();
+        filterGlassResults();
 
-    }, [query, setSearchResults])
+    }, [query, setGlassResults])
 
-    // console.log(searchResults);
+    // console.log(GlassResultsResults);
 
-    const renderSearchResult = () => {
+    const renderGlassResults = () => {
         return (
-            searchResults.map((drink) => {
+            glassResults.map((drink) => {
                 return (
                     <div key={drink.drinkID} className="SuggestedPageDisplay" sx={{ height: { xs: 120, sm: 150 } }} onClick={() => handlePageChange(drink.drinkID)}>
                         <Avatar alt={drink.drinkName} src={`${drink.drinkImg}/preview`} sx={{ width: { xs: 75, sm: 100 }, height: { xs: 75, sm: 100 }, zIndex: -1 }} />
@@ -61,9 +62,9 @@ export default function Search({ currentPage, handlePageChange, query }) {
     return (
         <div>
             <div className="SuggestedPageUI">
-                <h3 className="Header-SuggestedDrink">Search Results: {query}</h3>
+                <h3 className="Header-SuggestedDrink">Glass results for "{query}":</h3>
                 <div className="AllSuggestedDrinks">
-                    {searchResults ? renderSearchResult() : <h3 className="NoResult">No results for "{query}"</h3>}
+                    {glassResults ? renderGlassResults() : <h3 className="NoResult">No results for "{query}"</h3>}
                 </div>
             </div>
 

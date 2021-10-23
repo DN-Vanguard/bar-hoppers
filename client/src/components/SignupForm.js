@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { ADD_USER } from '../utils/mutations';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
-import { Modal, FormControl, InputLabel, Input, Alert, Button } from '@mui/material';
+// There was Alert down here
+import { Modal, FormControl, InputLabel, Input, Button } from '@mui/material';
 import { Box } from '@mui/system';
 
 const style = {
@@ -10,11 +11,14 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
+  width: 250,
   bgcolor: '#FFF',
-  border: '2px solid #000',
+  borderStyle: 'none',
+  borderRadius: '1rem',
   boxShadow: 24,
   p: 4,
+  display: 'flex',
+  flexDirection: 'column'
 };
 
 const SignupForm = () => {
@@ -23,7 +27,7 @@ const SignupForm = () => {
   // set state for form validation
   const [validated] = useState(false);
   // set state for alert
-  const [showAlert, setShowAlert] = useState(false);
+  // const [showAlert, setShowAlert] = useState(false);
   const [addUser] = useMutation(ADD_USER);
 
   const [open, setOpen] = React.useState(false);
@@ -54,7 +58,7 @@ const SignupForm = () => {
       Auth.login(info.addUser.token);
     } catch (err) {
       console.error(err);
-      setShowAlert(true);
+      // setShowAlert(true);
     }
 
     setUserFormData({
@@ -66,7 +70,7 @@ const SignupForm = () => {
 
   return (
     <>
-      <Button variant="contained" onClick={handleOpen}>Sign Up</Button>
+      <Button variant="contained" onClick={handleOpen} sx={{fontSize: 'large', fontWeight: 'bold', borderRadius: '5rem'}}>Sign Up</Button>
       <Modal open={open} onClose={handleClose}>
       {/* This is needed for the validation functionality above */}
         <Box sx={style}
@@ -82,10 +86,10 @@ const SignupForm = () => {
             Something went wrong with your signup!
           </Alert> */}
 
-          <FormControl>
+          <FormControl sx={{margin: '0.25rem 0.5rem 0.5rem 0.5rem'}}>
             <InputLabel htmlFor='username'>Username</InputLabel>
             <Input
-              error
+              // error
               type='text'
               name='username'
               onChange={handleInputChange}
@@ -95,10 +99,10 @@ const SignupForm = () => {
             {/* <FormControl.Feedback type='invalid'>Username is required!</FormControl.Feedback> */}
           </FormControl>
 
-          <FormControl>
+          <FormControl sx={{margin: '0.25rem 0.5rem 0.5rem 0.5rem'}}>
             <InputLabel htmlFor='email'>Email</InputLabel>
             <Input
-              error
+              // error
               type='email'
               name='email'
               onChange={handleInputChange}
@@ -108,10 +112,10 @@ const SignupForm = () => {
             {/* <FormControl.Feedback type='invalid'>Email is required!</FormControl.Feedback> */}
           </FormControl>
 
-          <FormControl>
+          <FormControl sx={{margin: '0.25rem 0.5rem 0.5rem 0.5rem'}}>
             <InputLabel htmlFor='password'>Password</InputLabel>
             <Input
-              error
+              // error
               type='password'
               name='password'
               onChange={handleInputChange}
@@ -123,8 +127,10 @@ const SignupForm = () => {
           <Button
             disabled={!(userFormData.username && userFormData.email && userFormData.password)}
             type='submit'
-            variant='success'>
-            Submit
+            variant='success'
+            sx={{borderStyle: 'none', top: '1rem', backgroundColor: '#3b8ad9', color: 'white', width: 'fit-content', alignSelf: 'center', fontSize: 'large', fontWeight: 'bold', borderRadius: '5rem'}}
+            >
+            SIGN UP
           </Button>
         </Box>
       </Modal>
