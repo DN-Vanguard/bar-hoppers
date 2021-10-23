@@ -76,7 +76,7 @@ export default function DrinkDetail(input) {
                     <h2>{drinkData.drinkName}</h2>
                     <div>
                         <IconButton onClick={() => handleSaveDrink(drinkData)} style={{cursor:"pointer"}} >
-                            <BookmarkIcon sx={{ zIndex: -1}}/>
+                            <BookmarkIcon fontSize="large" sx={{ zIndex: -1}}/>
                         </IconButton>
                     </div>
                 </div>
