@@ -46,6 +46,18 @@ export const allIngredients = () => {
 export const allTypes = () => {
   return fetch(`https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_COCKTAILDB_KEY}/list.php?a=list`);
 }
+// Filter by CATEGORY
+export const filterCategory = (query) => {
+  return fetch(`https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_COCKTAILDB_KEY}/filter.php?c=${query}`);
+}
+// Filter by GLASS
+export const filterGlass = (query) => {
+  return fetch(`https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_COCKTAILDB_KEY}/filter.php?g=${query}`);
+}
+// Filter by TYPE
+export const filterType = (query) => {
+  return fetch(`https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_COCKTAILDB_KEY}/filter.php?a=${query}`);
+}
 
 
 // 

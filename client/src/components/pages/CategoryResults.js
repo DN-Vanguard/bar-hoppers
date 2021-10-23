@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import "../../App.css"
-import { allCategory } from '../../utils/API';
 import Avatar from '@mui/material/Avatar';
 // import DrinkDetail from './DrinkDetail';
+import { filterCategory } from '../../utils/API';
 
-export default function Suggested({ currentPage, handlePageChange }) {
+
+export default function CategoryResults({ currentPage, handlePageChange }) {
     const [categoryData, setCategoryData] = useState([]);
     useEffect(() => {
         const loadCategory = async (event) => {
 
             try {
-                const response = await allCategory();
+                const response = await filterCategory();
                 if (!response.ok) {
                     throw new Error('Umm... try again?');
                 }

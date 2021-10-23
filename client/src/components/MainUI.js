@@ -8,9 +8,9 @@ import Profile from './pages/Profile';
 import Suggested from './pages/Suggested';
 import Letter from './pages/Letter';
 import Ingredient from './pages/Ingredient';
-import Glass from './pages/GlassResults';
-import Category from './pages/CategoryResults';
-import Type from './pages/TypeResults';
+import Glass from './pages/Glass';
+import Category from './pages/Category';
+import Type from './pages/Type';
 import Random from './pages/Random';
 import Contact from './pages/Contact';
 import DrinkDetail from './pages/DrinkDetail';
@@ -27,7 +27,7 @@ export default function MainUI() {
     const [value, setValue] = useState(0);
 
     useEffect(() => {
-        if ( (currentPage === "Suggested") || (currentPage === "Letter") || (currentPage === "Ingredient") || (currentPage === "Glass") || (currentPage === "Category") || (currentPage === "Type") || (currentPage === "Random") || (currentPage === "Contact") || (currentPage === "Search") || (currentPage === "LetterResults") || (currentPage.match(/^\d{5,6}$/)) ) {
+        if ( (currentPage === "Suggested") || (currentPage === "Letter") || (currentPage === "Ingredient") || (currentPage === "Glass") || (currentPage === "Category") || (currentPage === "Type") || (currentPage === "Random") || (currentPage === "Contact") || (currentPage === "Search") || (currentPage === "LetterResults") || (currentPage === "CategoryResults") || (currentPage === "GlassResults") || (currentPage === "TypeResults") || (currentPage.match(/^\d{5,6}$/)) ) {
             setValue("");
         }
     }, [currentPage])
@@ -55,13 +55,13 @@ export default function MainUI() {
             return <Ingredient currentPage={currentPage} handlePageChange={handlePageChange} />;
         }
         if (currentPage === "Glass") {
-            return <Glass currentPage={currentPage} handlePageChange={handlePageChange} />;
+            return <Glass currentPage={currentPage} handlePageChange={handlePageChange} setQuery={query} />;
         }
         if (currentPage === "Category") {
-            return <Category currentPage={currentPage} handlePageChange={handlePageChange} />;
+            return <Category currentPage={currentPage} handlePageChange={handlePageChange} setQuery={query} />;
         }
         if (currentPage === "Type") {
-            return <Type currentPage={currentPage} handlePageChange={handlePageChange} />;
+            return <Type currentPage={currentPage} handlePageChange={handlePageChange} setQuery={query} />;
         }
         if (currentPage === "Random") {
             return <Random currentPage={currentPage} handlePageChange={handlePageChange} />;

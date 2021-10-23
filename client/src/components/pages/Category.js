@@ -1,27 +1,46 @@
 import React, { useEffect, useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import "../../App.css";
+import { allCategory } from '../../utils/API';
 
-
-
-export default function Letter({ currentPage, handlePageChange, setQuery }) {
-  const [stateLtrNum, setStateLtrNum] = useState([]);
-
+export default function Category({ currentPage, handlePageChange, setQuery }) {
+  const [categoryData, setCategoryData] = useState([]);
   useEffect(() => {
-    const objLtrNum = { 0: { orgLtrNum: "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789" } }
+    const loadCategory = async (event) => {
 
-    const ltrNumArray = [...objLtrNum[0].orgLtrNum]
+      try {
+        const response = await allCategory();
+        if (!response.ok) {
+          throw new Error('Umm... try again?');
+        }
+        // console.log(response.json);
+        const { drinks } = await response.json();
+        // // Use the following console log to see the parsed response structure.
+        // console.log(drinks)
+        const categoryData = drinks.map((input) => ({
+            drinkCategory: input.strCategory
+        }));
+        // // Test final drinkData.
+        // console.log(categoryData);
+        setCategoryData(categoryData);
 
-    setStateLtrNum(ltrNumArray);
+      } catch (err) {
+        console.error(err);
+      }
+    };
 
-  }, [setStateLtrNum])
+    loadCategory();
 
-  const renderLtrNum = () => {
+  }, [setCategoryData])
+
+  // console.log(categoryData)
+
+  const renderCategory = () => {
     return (
-      stateLtrNum.map((character) => {
+      categoryData.map((category, index) => {
         return (
-          <div key={character} className="avatarStyles" onClick={() => {setQuery(character); handlePageChange("LetterResults")}}>
-            <Avatar variant="outlined" alt={character} sx={{ width: 50, height: 50, fontSize: "x-large" }}>{character}</Avatar>
+          <div key={index} className="avatarStyles" onClick={() => { setQuery(category.drinkCategory); handlePageChange("CategoryResults") }}>
+            <Avatar variant="outlined" alt={category.drinkCategory} sx={{ width: 50, height: 50, fontSize: "x-large" }}>{category.drinkCategory}</Avatar>
           </div>
         )
       }))
@@ -29,9 +48,9 @@ export default function Letter({ currentPage, handlePageChange, setQuery }) {
 
   return (
     <div>
-  <h3 className="Header-SuggestedDrink, margin">Select which drinks you would like to see by their first letter or number!</h3>
+      <h3 className="Header-SuggestedDrink, margin">Explore drinks by category:</h3>
       <div className="alphabetContainer">
-      {renderLtrNum()}
+        {renderCategory()}
       </div>
     </div>
   );
