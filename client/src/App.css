@@ -69,7 +69,6 @@
 
 /* LETTER'S STYLING */
 .alphabetContainer {
-    margin-top: 12rem;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -77,6 +76,12 @@
 }
 .avatarStyles {
     padding: 5px;
+}
+
+.margin {
+    margin-top: 6rem;
+    margin-bottom: 2rem;
+    text-align: center;
 }
 
 /* ---------------- */

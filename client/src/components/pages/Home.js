@@ -62,7 +62,7 @@ export default function Home({ currentPage, handlePageChange }) {
                             {popularDrinkData.map((drink) => {
                                 return (
                                     <div key={drink.drinkID} className="SuggestedDrinkDisplay" onClick={() => handlePageChange(drink.drinkID)}>
-                                        <Avatar alt={drink.drinkName} src={`${drink.drinkImg}/preview`} sx={{ width: 75, height: 75, zIndex: -1 }} />
+                                        <Avatar alt={drink.drinkName} src={`${drink.drinkImg}/preview`} sx={{ width: 75, height: 75, zIndex: -1, backgroundColor: "lightseagreen"}} />
                                         <label>{drink.drinkName}</label>
                                     </div>
                                 )
@@ -77,29 +77,29 @@ export default function Home({ currentPage, handlePageChange }) {
                         <div className="ExploreByDisplay">
                             <div className="ExploreByLine">
                                 <div className="ExploreByButton" onClick={() => handlePageChange("Letter")}>
-                                    <Avatar alt="Letter" sx={{ width: 80, height: 80, zIndex: -1 }}><SortByAlphaIcon fontSize="large" /></Avatar>
+                                    <Avatar alt="Letter" sx={{ width: 80, height: 80, zIndex: -1, backgroundColor: "lightseagreen"}}><SortByAlphaIcon fontSize="large" /></Avatar>
                                     <label>Name</label>
                                 </div>
                                 <div className="ExploreByButton" onClick={() => handlePageChange("Ingredient")}>
-                                    <Avatar alt="Ingredient" sx={{ width: 80, height: 80, zIndex: -1 }}><ScienceIcon fontSize="large" /></Avatar>
+                                    <Avatar alt="Ingredient" sx={{ width: 80, height: 80, zIndex: -1, backgroundColor: "lightseagreen"}}><ScienceIcon fontSize="large" /></Avatar>
                                     <label>Ingredient</label>
                                 </div>
                                 <div className="ExploreByButton" onClick={() => handlePageChange("Glass")}>
-                                    <Avatar alt="Glass" sx={{ width: 80, height: 80, zIndex: -1 }}><LocalBarIcon fontSize="large" /></Avatar>
+                                    <Avatar alt="Glass" sx={{ width: 80, height: 80, zIndex: -1, backgroundColor: "lightseagreen"}}><LocalBarIcon fontSize="large" /></Avatar>
                                     <label>Glass</label>
                                 </div>
                             </div>
                             <div className="ExploreByLine">
                                 <div className="ExploreByButton" onClick={() => handlePageChange("Category")}>
-                                    <Avatar alt="Category" sx={{ width: 80, height: 80, zIndex: -1 }}><BrunchDiningIcon fontSize="large" /></Avatar>
+                                    <Avatar alt="Category" sx={{ width: 80, height: 80, zIndex: -1, backgroundColor: "lightseagreen"}}><BrunchDiningIcon fontSize="large" /></Avatar>
                                     <label>Category</label>
                                 </div>
                                 <div className="ExploreByButton" onClick={() => handlePageChange("Type")}>
-                                    <Avatar alt="Type" sx={{ width: 80, height: 80, zIndex: -1 }}><CategoryIcon fontSize="large" /></Avatar>
+                                    <Avatar alt="Type" sx={{ width: 80, height: 80, zIndex: -1, backgroundColor: "lightseagreen"}}><CategoryIcon fontSize="large" /></Avatar>
                                     <label>Type</label>
                                 </div>
                                 <div className="ExploreByButton" onClick={() => handlePageChange("Random")}>
-                                    <Avatar alt="Random" sx={{ width: 80, height: 80, zIndex: -1 }}><ShuffleIcon fontSize="large" /></Avatar>
+                                    <Avatar alt="Random" sx={{ width: 80, height: 80, zIndex: -1, backgroundColor: "lightseagreen"}}><ShuffleIcon fontSize="large" /></Avatar>
                                     <label>Random</label>
                                 </div>
                             </div>

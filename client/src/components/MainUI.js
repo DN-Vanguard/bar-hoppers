@@ -8,14 +8,17 @@ import Profile from './pages/Profile';
 import Suggested from './pages/Suggested';
 import Letter from './pages/Letter';
 import Ingredient from './pages/Ingredient';
-import Glass from './pages/Glass';
-import Category from './pages/Category';
-import Type from './pages/Type';
+import Glass from './pages/GlassResults';
+import Category from './pages/CategoryResults';
+import Type from './pages/TypeResults';
 import Random from './pages/Random';
 import Contact from './pages/Contact';
 import DrinkDetail from './pages/DrinkDetail';
 import Search from './pages/Search';
 import LetterResults from './pages/LetterResults';
+import CategoryResults from './pages/CategoryResults';
+import TypeResults from './pages/TypeResults';
+import GlassResults from './pages/GlassResults';
 
 
 function MainUI() {
@@ -67,6 +70,15 @@ function MainUI() {
         }
         if (currentPage === "LetterResults") {
             return <LetterResults currentPage={currentPage} handlePageChange={handlePageChange} query={query} />
+        }
+        if (currentPage === "CategoryResults") {
+            return <CategoryResults currentPage={currentPage} handlePageChange={handlePageChange} />
+        }
+        if (currentPage === "GlassResults") {
+            return <GlassResults currentPage={currentPage} handlePageChange={handlePageChange} />
+        }
+        if (currentPage === "TypeResults") {
+            return <TypeResults currentPage={currentPage} handlePageChange={handlePageChange} />
         }
 
     };
