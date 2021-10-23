@@ -1,37 +1,66 @@
 import React, { useEffect, useState } from 'react';
-import Avatar from '@mui/material/Avatar';
+import List from '@mui/material/List';
+import Button from '@mui/material/Button';
 import "../../App.css";
+import { allTypes } from '../../utils/API';
 
-
-
-export default function Letter({ currentPage, handlePageChange, setQuery }) {
-  const [stateLtrNum, setStateLtrNum] = useState([]);
-
+export default function Alcoholic({ currentPage, handlePageChange, setQuery }) {
+  const [alcoholicData, setAlcoholicData] = useState([]);
   useEffect(() => {
-    const objLtrNum = { 0: { orgLtrNum: "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789" } }
+    const loadAlcoholic = async (event) => {
 
-    const ltrNumArray = [...objLtrNum[0].orgLtrNum]
+      try {
+        const response = await allTypes();
+        if (!response.ok) {
+          throw new Error('Umm... try again?');
+        }
+        // console.log(response.json);
+        const { drinks } = await response.json();
+        // // Use the following console log to see the parsed response structure.
+        // console.log(drinks)
+        const alcoholicData = drinks.map((input) => ({
+            drinkAlcoholic: input.strAlcoholic
+        }));
+        // // Test final drinkData.
+        // console.log(alcoholicData);
+        setAlcoholicData(alcoholicData);
 
-    setStateLtrNum(ltrNumArray);
+      } catch (err) {
+        console.error(err);
+      }
+    };
 
-  }, [setStateLtrNum])
+    loadAlcoholic();
 
-  const renderLtrNum = () => {
+  }, [setAlcoholicData])
+
+  // console.log(alcoholicData)
+
+  const renderAlcoholic = () => {
     return (
-      stateLtrNum.map((character) => {
+      alcoholicData.map((Alcoholic, index) => {
         return (
-          <div key={character} className="avatarStyles" onClick={() => {setQuery(character); handlePageChange("LetterResults")}}>
-            <Avatar variant="outlined" alt={character} sx={{ width: 50, height: 50, fontSize: "x-large",  backgroundColor: "lightseagreen" }}>{character}</Avatar>
+          <div key={index} className="avatarStyles" onClick={() => { setQuery(Alcoholic.drinkAlcoholic); handlePageChange("TypeResults") }}>
+            <List alt={Alcoholic.drinkAlcoholic} sx={{ 
+            fontSize: "large",
+            marginBottom: .5,
+            marginTop: .5,
+            padding: .5,
+            border: 2,
+            borderRadius: 5,
+            zIndex: -1 }}>
+            <Button>{Alcoholic.drinkAlcoholic}</Button>
+            </List>
           </div>
         )
       }))
   };
 
   return (
-    <div>
-  <h3 className="Header-SuggestedDrink, margin">Select which drinks you would like to see by their first letter or number!</h3>
-      <div className="alphabetContainer">
-      {renderLtrNum()}
+    <div className="HomePageUI">
+      <h3 className="Header-SuggestedDrink">Explore Drinks by Type:</h3>
+      <div className="caGlTyContainer">
+        {renderAlcoholic()}
       </div>
     </div>
   );
