@@ -1,6 +1,7 @@
 import React from 'react';
-import logo from '../../logo-bh.png';
-import "../../App.css"
+// import logo from '../../logo-bh.png';
+import "../../App.css";
+import SavedDrinks from '../SavedDrinks';
 
 export default function Favorite({ handlePageChange }) {
     return (
