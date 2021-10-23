@@ -20,7 +20,38 @@ export const LOGIN_USER = gql`
             user {
                 _id
                 username
+                email
             }
         }
     }
 `;
+
+ export const SAVE_DRINK = gql`
+    mutation saveDrink($drinkID: String!, $drinkName: String, $drinkImg: String, $drinkCategory: String, $drinkAlcoholic: String, $drinkGlass: String, $drinkInstructions: String) {
+        saveDrink(drinkID: $drinkID, drinkName: $drinkName, drinkImg: $drinkImg, drinkCategory: $drinkCategory, drinkAlcoholic: $drinkAlcoholic, drinkGlass: $drinkGlass, drinkInstructions: $drinkInstructions) {
+            _id
+            username
+            email
+            savedDrinks {
+                drinkID
+                drinkName
+                drinkImg
+            }
+        }
+    }
+ `;
+
+ export const REMOVE_DRINK = gql`
+    mutation removeDrink($drinkID: String) {
+        removeDrink(drinkID: $drinkID) {
+            _id
+            username
+            email
+            savedDrinks {
+                drinkID
+                drinkName
+                drinkImg
+            }
+        }
+    }
+ `;

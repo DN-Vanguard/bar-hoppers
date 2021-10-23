@@ -63,7 +63,7 @@ export default function Search({ currentPage, handlePageChange, query }) {
             <div className="SuggestedPageUI">
                 <h3 className="Header-SuggestedDrink">Search Results: {query}</h3>
                 <div className="AllSuggestedDrinks">
-                    {searchResults ? renderSearchResult() : <p>No Result</p>}
+                    {searchResults ? renderSearchResult() : <h3 className="NoResult">No result of "{query}"</h3>}
                 </div>
             </div>
 
