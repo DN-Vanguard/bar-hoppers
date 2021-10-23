@@ -1,7 +1,7 @@
 import logo from "../../logo-bh.png";
 import "../../App.css";
 import { cocktailRandom } from "../../utils/API";
-import SaveAltIcon from "@mui/icons-material/SaveAlt";
+import BookmarkIcon from '@mui/icons-material/Bookmark';
 import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import DrinkDisplay from "../DrinkDisplay";
@@ -75,9 +75,10 @@ export default function Random({ currentPage, handlePageChange }) {
           handlePageChange={handlePageChange}
           sx={{ paddingBottom: 2 }}
         />
-        <SaveAltIcon
+        <BookmarkIcon
           onClick={() => handleSaveDrink(randomDrinkData)}
-        ></SaveAltIcon>
+          style={{cursor:"pointer"}}
+        ></BookmarkIcon>
       </div>
     );
   };
