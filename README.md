@@ -66,7 +66,9 @@ THEN I am LOGGED OUT of my account
 ```
 
 
-## <u>Wireframe and Images</u>
+## <u>Images</u>
+<img src="assets/img/drinkdescr.png" width="600" height="600" alt="drink description"/>
+
 
 ## <u>TEchnologies Used</u>
 * React
