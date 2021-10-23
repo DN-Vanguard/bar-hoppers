@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Avatar from '@mui/material/Avatar';
+import List from '@mui/material/List';
+import Button from '@mui/material/Button';
 import "../../App.css";
 import { allCategory } from '../../utils/API';
 
@@ -40,16 +41,25 @@ export default function Category({ currentPage, handlePageChange, setQuery }) {
       categoryData.map((category, index) => {
         return (
           <div key={index} className="avatarStyles" onClick={() => { setQuery(category.drinkCategory); handlePageChange("CategoryResults") }}>
-            <Avatar variant="outlined" alt={category.drinkCategory} sx={{ width: 50, height: 50, fontSize: "x-large" }}>{category.drinkCategory}</Avatar>
+            <List alt={category.drinkCategory} sx={{ 
+            fontSize: "large",
+            marginBottom: .5,
+            marginTop: .5,
+            padding: .5,
+            border: 2,
+            borderRadius: 5,
+            zIndex: -1 }}>
+            <Button>{category.drinkCategory}</Button>
+            </List>
           </div>
         )
       }))
   };
 
   return (
-    <div>
-      <h3 className="Header-SuggestedDrink, margin">Explore drinks by category:</h3>
-      <div className="alphabetContainer">
+    <div className="HomePageUI">
+      <h3 className="Header-SuggestedDrink">Explore Drinks by Category:</h3>
+      <div className="caGlTyContainer">
         {renderCategory()}
       </div>
     </div>
