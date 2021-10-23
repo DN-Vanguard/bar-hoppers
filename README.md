@@ -75,3 +75,5 @@ THEN I am LOGGED OUT of my account
 * CSS
 * Heroku
 * MongoDB
+* JWT
+* GraphQL
