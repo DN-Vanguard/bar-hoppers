@@ -43,10 +43,14 @@ const SavedDrinks = ({currentPage, handlePageChange}) => {
             <Stack direction="column">
                 {userData.savedDrinks.map((drink) => {
                     return (
-                        <div key={drink.drinkID} onClick={() => handlePageChange(drink.drinkID)}>
-                            <Avatar alt={drink.drinkName} src={`${drink.drinkImg}/preview`} sx={{ width: 75, height: 75, zIndex: -1 }} />
-                            <label>{drink.drinkName}</label>
-                            <DeleteForeverIcon onClick={() => handleDeleteDrink(drink.drinkID)}/>
+                        <div>
+                            <div key={drink.drinkID} onClick={() => handlePageChange(drink.drinkID)}>
+                                <Avatar alt={drink.drinkName} src={`${drink.drinkImg}/preview`} sx={{ width: 75, height: 75, zIndex: -1 }} />
+                                <label>{drink.drinkName}</label>
+                            </div>
+                            <div onClick={() => handleDeleteDrink(drink.drinkID)} style={{cursor:"pointer"}}>
+                                    <DeleteForeverIcon />
+                            </div>
                         </div>
                     )
                 })}
