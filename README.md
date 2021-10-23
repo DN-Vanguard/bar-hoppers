@@ -3,7 +3,7 @@
 ## <u>Project Description</u>
 Coming out of an unprecedented era of quarantines and social reclusiveness there are many new "bar hoppers" and others who may feel as if their social skills hit a hard reset over the last year and a half. Our app aims to give the user a less stressful expierence in which they are able to order with confidence and be exposed to new drink options they previously might not have known about.
 
-[Click here to check out our app!](https://dn-bar-hopper.herokuapp.com/)
+[Click here to check out our app!](https://dn-bar-hoppers.herokuapp.com/)
 
 **AUDIENCE**:
 Socially anxious bar patrons, new bar patrons, and curious bar patrons
