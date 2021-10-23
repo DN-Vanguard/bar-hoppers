@@ -58,7 +58,7 @@ export default function DrinkDetail(input) {
                 <h3>Details about the drink</h3>
                 <hr />
                 <div className="DetailsAboutDrink">
-                    <div>
+                    <div className="DetailsAboutDrinkLabel">
                         <p>Category:</p>
                         <p>Alcoholic:</p>
                         <p>Glass:</p>
